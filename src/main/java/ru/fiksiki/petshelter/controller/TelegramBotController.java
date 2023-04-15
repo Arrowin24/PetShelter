@@ -1,4 +1,4 @@
-package controller;
+package ru.fiksiki.petshelter.controller;
 
 import lombok.extern.log4j.Log4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -27,6 +27,6 @@ public class TelegramBotController  extends TelegramLongPollingBot {
 
     @Override
     public void onUpdateReceived(Update update) {
-
+///
     }
 }
