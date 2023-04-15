@@ -10,9 +10,9 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 @Component
 @Log4j
 public class TelegramBotController  extends TelegramLongPollingBot {
-     @Value("PetShelterAstana_bot") private String botName;
+     @Value("${telegram.bot.name}") private String botName;
 
-     @Value("5671368594:AAEOaJkwIn9JPESj87qUIDPUMJx2a9Sb2CE") private String botToken;
+     @Value("${telegram.bot.token}") private String botToken;
 
 
     @Override
