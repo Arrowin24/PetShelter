@@ -1,4 +1,4 @@
-package controller;
+package ru.fiksiki.petshelter.controller;
 
 import lombok.extern.log4j.Log4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -8,7 +8,6 @@ import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.objects.Update;
 @Controller
 @Component
-@Log4j
 public class TelegramBotController  extends TelegramLongPollingBot {
      @Value("${telegram.bot.name}") private String botName;
 
