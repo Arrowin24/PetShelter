@@ -8,7 +8,7 @@ import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.objects.Update;
 @Controller
 @Component
-@Log4j
+
 public class TelegramBotController  extends TelegramLongPollingBot {
      @Value("${telegram.bot.name}") private String botName;
 
@@ -27,6 +27,6 @@ public class TelegramBotController  extends TelegramLongPollingBot {
 
     @Override
     public void onUpdateReceived(Update update) {
-///
+
     }
 }
