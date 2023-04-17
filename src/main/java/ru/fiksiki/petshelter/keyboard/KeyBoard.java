@@ -6,6 +6,7 @@ import ru.fiksiki.petshelter.command.CommandName;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public interface KeyBoard {
 
@@ -19,6 +20,6 @@ public interface KeyBoard {
     }
 
     default List<InlineKeyboardButton> createButtonsLine(InlineKeyboardButton... button) {
-        return Arrays.stream(button).toList();
+        return Arrays.stream(button).collect(Collectors.toList());
     }
 }
