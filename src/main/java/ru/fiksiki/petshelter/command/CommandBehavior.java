@@ -4,15 +4,15 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 
 public interface CommandBehavior {
     /***
-     * Methode for execute command
-     * @param update
+     * Methode to execute command
+     * @param update get info from telegram chat
      */
     void execute(Update update);
 
 
     /***
      * Get chatId from telegram
-     * @param update
+     * @param update get info from telegram chat
      * @return chatId
      */
     default long getId(Update update) {
