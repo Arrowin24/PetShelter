@@ -3,6 +3,7 @@ package ru.fiksiki.petshelter.command;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+
 /**
  * Enum contains commands names. Command use names to link with telegram bot API
  */
