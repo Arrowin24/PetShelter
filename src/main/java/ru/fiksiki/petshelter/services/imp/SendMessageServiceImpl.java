@@ -9,7 +9,9 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import ru.fiksiki.petshelter.controller.TelegramBotController;
 import ru.fiksiki.petshelter.services.SendMessageService;
 
-
+/**
+ * Service for something....
+ */
 @Service
 public class SendMessageServiceImpl implements SendMessageService {
     private final TelegramBotController telegramBot;
