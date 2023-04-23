@@ -19,7 +19,16 @@ public enum CommandName {
     INFO_SHELTER("/getInfo"), // Узнать информацию о приюте
     GET_PET_IS_SHELTER("/getPet"),//Как взять животное из приюта
     GET_REPORT_IS_PET("/getReport"), // Прислать отчет о питомце
-    GET_VOLUNTEERS("/getVolunteers"); // Позвать волонтера
+    GET_VOLUNTEERS("/getVolunteers"), // Позвать волонтера
+    INFO_CATS("/infocats"), //Информация о приюте кошек
+    INFO_DOGS("/infodogs"), //Информация о приюте собак
+    INFO_WORK_SCHEDULE_DOGS("/worksheduledogs"), // Информация о времени работы приюта для собак и адрес приюта
+    INFO_WORK_SCHEDULE_CATS("/workshedulecats"),// Информация о времени работы приюта для кошек и адрес приюта
+    CONTACT_SECURITY_CATS("/contactsecuritycats"), //Контактные данные охраны для оформления пропуска в приют для кошек
+    CONTACT_SECURITY_DOGS("/contactsecuritydogs"), //Контактные данные охраны для оформления пропуска в приют для собак
+    RECOMMENDATIONS_SAFETY_CATS("/infosafetycats"), //Правила безопасности в приюте для кошек
+    RECOMMENDATIONS_SAFETY_DOGS("/infosafetydogs"),//Правила безопасности в приюте для собак
+    BACK_TO_MENU("/backtomenu"); // Кнопка выхода в предыдущее меню
 
     private final String commandName;
 }
