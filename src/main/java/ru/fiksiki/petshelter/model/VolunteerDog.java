@@ -24,4 +24,8 @@ public class VolunteerDog {
     private String mail;
     @Column(name="phone")
     private String phone;
+
+    public String toText() {
+        return "Волонтер с ID: " + id + "\n Имя: " + name + "\n Телефон: "+phone;
+    }
 }

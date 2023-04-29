@@ -1,12 +1,13 @@
 package ru.fiksiki.petshelter.controller;
 
-import lombok.extern.log4j.Log4j;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import ru.fiksiki.petshelter.command.CommandContainer;
+import ru.fiksiki.petshelter.step.StepsContainer;
 
 @Controller
 @Component
@@ -18,9 +19,11 @@ public class TelegramBotController  extends TelegramLongPollingBot {
      @Value("${telegram.bot.token}") private String botToken;
 
     private final CommandContainer commandContainer;
+    private final StepsContainer stepsContainer;
 
-    public TelegramBotController(CommandContainer commandContainer) {
+    public TelegramBotController(CommandContainer commandContainer, StepsContainer stepsContainer) {
         this.commandContainer = commandContainer;
+        this.stepsContainer = stepsContainer;
     }
 
     @Override
@@ -41,6 +44,9 @@ public class TelegramBotController  extends TelegramLongPollingBot {
         }
         if (update.hasCallbackQuery()) {        // если есть клавиатура или данные с нее
             message = update.getCallbackQuery().getData();
+        }
+        if(stepsContainer.isContains(update)) {     // если это продолжение многостадийной команды
+            stepsContainer.getStep(update).doStep(update);
         }
         if (message.startsWith(COMMAND_PREFIX)) {   // если это обычная команда
             commandContainer.retrieveCommand(message).execute(update);
