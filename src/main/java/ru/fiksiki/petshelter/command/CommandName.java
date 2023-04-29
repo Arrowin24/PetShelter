@@ -28,7 +28,17 @@ public enum CommandName {
     CONTACT_SECURITY_DOGS("/contactsecuritydogs"), //Контактные данные охраны для оформления пропуска в приют для собак
     RECOMMENDATIONS_SAFETY_CATS("/infosafetycats"), //Правила безопасности в приюте для кошек
     RECOMMENDATIONS_SAFETY_DOGS("/infosafetydogs"),//Правила безопасности в приюте для собак
-    BACK_TO_MENU("/backtomenu"); // Кнопка выхода в предыдущее меню
+    BACK_TO_MENU("/backtomenu"), // Кнопка выхода в предыдущее меню
+    RECOMMENDATIONS_CATS("/recomendationscats"), //Кнопка с рекомендациями для потенциальных хозяев кошки
+    RECOMMENDATIONS_DOGS("/recommendationsdogs"), //Кнопка с рекомендациями для потенциальных хозяев собаки
+    CATS_RULES("/catsrules"), //Кнопка с правилами знакомства с кошкой
+    LIST_DOCUMENTATIONS_CATS("/listdocumentationcats"), //Кнопка с документами необходимыми для взятия кошки из приюта
+    TRANSPORTATION_CATS("/transportationcats"),//Кнопка с рекомендациями по транспортировке кошки
+    HOME_IMPROVEMENT_KITTEN("/homekitten"), // Кнопка с рекомендациями по обустройству дома для котенка
+    HOME_IMPROVEMENT_CATS("/homecats"), // Кнопка с рекомендациями по обустройству дома для взрослой кошки
+    HOME_IMPROVEMENT_DISABLED_CATS("/homedisabledcats"), // Кнопка с рекомендациями по обустройству дома для кошки с ограниченными возможностями
+    REASONS_FOR_REFUSAL_CATS("/reasonsforrefusalcats"); //Кнопка с правилами отказа от взятия кошки из приюта
+
 
     private final String commandName;
 }

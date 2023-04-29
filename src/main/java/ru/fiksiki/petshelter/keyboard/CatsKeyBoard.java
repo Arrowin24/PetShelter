@@ -12,20 +12,18 @@ public class CatsKeyBoard implements KeyBoard{
     @Override
     public InlineKeyboardMarkup getKeyBoard() {
         InlineKeyboardButton button1 = createButton("Узнать информацию о приюте", CommandName.INFO_CATS);
-        InlineKeyboardButton button2 = createButton("Узнать расписание работы приюта для кошек и адрес",CommandName.INFO_WORK_SCHEDULE_CATS);
-        InlineKeyboardButton button3 = createButton("Данные охраны для оформления пропуска на машину", CommandName.CONTACT_SECURITY_CATS);
-        InlineKeyboardButton button4 = createButton("Рекомендации по технике безопасности", CommandName.RECOMMENDATIONS_SAFETY_CATS);
-        InlineKeyboardButton button5 = createButton("Как взять животное из приюта", CommandName.GET_PET_IS_SHELTER);
-        InlineKeyboardButton button6 = createButton("Прислать отчет о питомце", CommandName.GET_REPORT_IS_PET);
-        InlineKeyboardButton button7 = createButton("Позвать волонтера", CommandName.GET_VOLUNTEERS);
+        InlineKeyboardButton button2 = createButton("Рекомендации для будущих хозяев кошки/кота", CommandName.RECOMMENDATIONS_CATS);
+        InlineKeyboardButton button3 = createButton("Прислать отчет о питомце", CommandName.GET_REPORT_IS_PET);
+        InlineKeyboardButton button4 = createButton("Позвать волонтера", CommandName.GET_VOLUNTEERS);
+        InlineKeyboardButton button5 = createButton("Вернуться в меню", CommandName.START);
+
         List<List<InlineKeyboardButton>> keyboard = new ArrayList<>();
         keyboard.add(createButtonsLine(button1));
         keyboard.add(createButtonsLine(button2));
         keyboard.add(createButtonsLine(button3));
         keyboard.add(createButtonsLine(button4));
         keyboard.add(createButtonsLine(button5));
-        keyboard.add(createButtonsLine(button6));
-        keyboard.add(createButtonsLine(button7));
+
         return  new InlineKeyboardMarkup(keyboard);
     }
 }
