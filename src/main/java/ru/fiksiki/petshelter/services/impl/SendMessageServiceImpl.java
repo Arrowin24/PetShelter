@@ -1,6 +1,7 @@
-package ru.fiksiki.petshelter.model.imp;
+package ru.fiksiki.petshelter.services.impl;
 
 
+import lombok.extern.log4j.Log4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
@@ -12,6 +13,7 @@ import ru.fiksiki.petshelter.services.SendMessageService;
 /**
  * Service for something....
  */
+@Log4j
 @Service
 public class SendMessageServiceImpl implements SendMessageService {
     private final TelegramBotController telegramBot;
@@ -33,7 +35,7 @@ public class SendMessageServiceImpl implements SendMessageService {
         try {
             telegramBot.execute(message);
         } catch (TelegramApiException e) {
-
+            log.debug(e.getMessage());
         }
     }
 
