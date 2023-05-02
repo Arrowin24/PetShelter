@@ -1,4 +1,4 @@
-package ru.fiksiki.petshelter.model.imp;
+package ru.fiksiki.petshelter.services.impl;
 
 
 import org.springframework.beans.factory.annotation.Autowired;

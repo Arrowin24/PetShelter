@@ -6,6 +6,8 @@ import ru.fiksiki.petshelter.model.VolunteerDog;
 import ru.fiksiki.petshelter.services.VolunteerDogService;
 import ru.fiksiki.petshelter.services.repository.VolunteerDogRepository;
 
+import java.util.List;
+
 @Service
 public class VolunteerDogServiceImpl implements VolunteerDogService {
 
@@ -13,6 +15,14 @@ public class VolunteerDogServiceImpl implements VolunteerDogService {
 
     public VolunteerDogServiceImpl(VolunteerDogRepository volunteerRepository) {
         this.volunteerRepository = volunteerRepository;
+    }
+
+    @Override
+    public List<VolunteerDog> getAll() {
+       //return volunteerRepository.findAll();
+        VolunteerDog anton = new VolunteerDog();
+        anton.setId(420046312);
+        return List.of(anton);
     }
 
     @Override

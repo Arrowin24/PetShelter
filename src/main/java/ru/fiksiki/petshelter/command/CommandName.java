@@ -19,7 +19,10 @@ public enum CommandName {
     INFO_SHELTER("/getInfo"), // Узнать информацию о приюте
     GET_PET_IS_SHELTER("/getPet"),//Как взять животное из приюта
     GET_REPORT_IS_PET("/getReport"), // Прислать отчет о питомце
-    GET_VOLUNTEERS("/getVolunteers"), // Позвать волонтера
+    GET_DOG_VOLUNTEER("/getDogVolunteer"), // Позвать волонтера из приюта для собак
+    ACCEPT_USER_QUERY("/acptQ"), //Принять запрос от пользователя
+    DECLINE_USER_QUERY("/dclnQ"),//Отклонить запрос от пользователя
+    FINISH_TALK("/fin"), //Завершить разговор с пользователем
     INFO_CATS("/infocats"), //Информация о приюте кошек
     INFO_DOGS("/infodogs"), //Информация о приюте собак
     INFO_WORK_SCHEDULE_DOGS("/worksheduledogs"), // Информация о времени работы приюта для собак и адрес приюта
