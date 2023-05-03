@@ -1,25 +1,27 @@
-package ru.fiksiki.petshelter.command;
+package ru.fiksiki.petshelter.command.volunteer;
 
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.objects.Update;
+import ru.fiksiki.petshelter.command.Command;
+import ru.fiksiki.petshelter.command.CommandName;
 import ru.fiksiki.petshelter.services.SendMessageService;
-import ru.fiksiki.petshelter.step.AnswerDogUserStep;
-import ru.fiksiki.petshelter.step.CallDogVolunteerStep;
+import ru.fiksiki.petshelter.step.talk.AnswerDogUserStep;
+import ru.fiksiki.petshelter.step.talk.CallDogVolunteerStep;
 import ru.fiksiki.petshelter.step.StepName;
 import ru.fiksiki.petshelter.step.StepsContainer;
 
 import static ru.fiksiki.petshelter.controller.TelegramBotController.SPLIT;
 
 @Component
-public class AcceptUserQueryCommand extends Command {
+public class AcceptDogUserQueryCommand extends Command {
 
     private final SendMessageService sendMessageService;
 
     private final StepsContainer container;
 
 
-    public AcceptUserQueryCommand(SendMessageService sendMessageService, StepsContainer container) {
-        super(CommandName.ACCEPT_USER_QUERY);
+    public AcceptDogUserQueryCommand(SendMessageService sendMessageService, StepsContainer container) {
+        super(CommandName.ACCEPT_DOG_USER_QUERY);
         this.sendMessageService = sendMessageService;
         this.container = container;
 

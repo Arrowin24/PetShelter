@@ -1,12 +1,14 @@
-package ru.fiksiki.petshelter.command;
+package ru.fiksiki.petshelter.command.volunteer;
 
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.objects.Update;
+import ru.fiksiki.petshelter.command.Command;
+import ru.fiksiki.petshelter.command.CommandName;
 import ru.fiksiki.petshelter.services.SendMessageService;
-import ru.fiksiki.petshelter.step.CallDogVolunteerStep;
+import ru.fiksiki.petshelter.step.talk.CallDogVolunteerStep;
 
 @Component
-public class CallDogVolunteerCommand extends Command{
+public class CallDogVolunteerCommand extends Command {
 
     private final SendMessageService sendMessageService;
 

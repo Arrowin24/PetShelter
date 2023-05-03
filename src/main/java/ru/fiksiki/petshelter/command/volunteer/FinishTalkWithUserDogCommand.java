@@ -1,13 +1,15 @@
-package ru.fiksiki.petshelter.command;
+package ru.fiksiki.petshelter.command.volunteer;
 
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
+import ru.fiksiki.petshelter.command.Command;
+import ru.fiksiki.petshelter.command.CommandName;
 import ru.fiksiki.petshelter.services.SendMessageService;
-import ru.fiksiki.petshelter.step.AnswerDogUserStep;
+import ru.fiksiki.petshelter.step.talk.AnswerDogUserStep;
 import ru.fiksiki.petshelter.step.StepsContainer;
 @Component
-public class FinishTalkWithUserCommand extends Command {
+public class FinishTalkWithUserDogCommand extends Command {
     private final static String THANKS = "Спасибо за обращение!";
 
     private final StepsContainer container;
@@ -15,8 +17,8 @@ public class FinishTalkWithUserCommand extends Command {
     private final SendMessageService sendMessageService;
 
 
-    public FinishTalkWithUserCommand(SendMessageService sendMessageService, StepsContainer container) {
-        super(CommandName.FINISH_TALK);
+    public FinishTalkWithUserDogCommand(SendMessageService sendMessageService, StepsContainer container) {
+        super(CommandName.FINISH_TALK_DOG_USER);
         this.container = container;
         this.sendMessageService = sendMessageService;
     }

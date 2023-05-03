@@ -1,4 +1,4 @@
-package ru.fiksiki.petshelter.step;
+package ru.fiksiki.petshelter.step.talk;
 
 import lombok.extern.log4j.Log4j;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
@@ -6,16 +6,19 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
-import ru.fiksiki.petshelter.keyboard.VolunteerAcceptKeyBoard;
+import ru.fiksiki.petshelter.keyboard.volunteer.DogVolunteerAcceptKeyBoard;
 import ru.fiksiki.petshelter.model.VolunteerDog;
 import ru.fiksiki.petshelter.services.SendMessageService;
 import ru.fiksiki.petshelter.services.VolunteerDogService;
+import ru.fiksiki.petshelter.step.Step;
+import ru.fiksiki.petshelter.step.StepName;
+import ru.fiksiki.petshelter.step.StepsContainer;
 
 import java.util.List;
 @Log4j
 @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 @Service
-public class CallDogVolunteerStep extends Step{
+public class CallDogVolunteerStep extends Step {
 
     private final VolunteerDogService volunteerDogService;
     private final static String START_TEXT = "Ожидайте, волонтёр уже спешит на помощь";
@@ -49,7 +52,7 @@ public class CallDogVolunteerStep extends Step{
         volunteers.stream().forEach(v -> {
             alarmMessage.setChatId(v.getId());
             alarmMessage.setText(String.format(ALARM_TEXT, id));
-            alarmMessage.setReplyMarkup(new VolunteerAcceptKeyBoard().getKeyBoard(id));
+            alarmMessage.setReplyMarkup(new DogVolunteerAcceptKeyBoard().getKeyBoard(id));
             getSendMessageService().sendMessage(alarmMessage);
         });
 

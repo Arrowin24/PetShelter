@@ -1,4 +1,4 @@
-package ru.fiksiki.petshelter.step;
+package ru.fiksiki.petshelter.step.talk;
 
 import lombok.extern.log4j.Log4j;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
@@ -6,9 +6,13 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
-import ru.fiksiki.petshelter.command.FinishTalkWithUserCommand;
-import ru.fiksiki.petshelter.keyboard.FinishTalkKeyBoard;
+import ru.fiksiki.petshelter.command.CommandName;
+import ru.fiksiki.petshelter.command.volunteer.FinishTalkWithUserDogCommand;
+import ru.fiksiki.petshelter.keyboard.volunteer.FinishDogVolunteerKeyBoard;
 import ru.fiksiki.petshelter.services.SendMessageService;
+import ru.fiksiki.petshelter.step.Step;
+import ru.fiksiki.petshelter.step.StepName;
+import ru.fiksiki.petshelter.step.StepsContainer;
 
 @Service
 @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
@@ -25,10 +29,6 @@ public class AnswerDogUserStep extends Step {
 
     @Override
     public void startStep(Update update) {
-//        AnswerDogUserStep answerDogUserStep = new AnswerDogUserStep(getContainer(), getSendMessageService());
-//        answerDogUserStep.setStep(StepName.ONE);
-//        getContainer().putStep(getId(update),answerDogUserStep);
-
     }
 
     @Override
@@ -39,14 +39,14 @@ public class AnswerDogUserStep extends Step {
         SendMessage finish = new SendMessage();
         finish.setText("------------------");
         finish.setChatId(getId(update));
-        finish.setReplyMarkup(new FinishTalkKeyBoard().getKeyBoard());
+        finish.setReplyMarkup(new FinishDogVolunteerKeyBoard().getKeyBoard());
         getSendMessageService().sendMessage(finish);
 
         if (currentStep.getStep() == StepName.ONE) {
-            if (updateText.equals("/fin")) {
-                FinishTalkWithUserCommand finishTalkWithUserCommand
-                        = new FinishTalkWithUserCommand(getSendMessageService(), getContainer());
-                finishTalkWithUserCommand.execute(update);
+            if (updateText.equals(CommandName.FINISH_TALK_DOG_USER.getCommandName())) {
+                FinishTalkWithUserDogCommand finishTalkWithUserDogCommand
+                        = new FinishTalkWithUserDogCommand(getSendMessageService(), getContainer());
+                finishTalkWithUserDogCommand.execute(update);
             } else {
 
 

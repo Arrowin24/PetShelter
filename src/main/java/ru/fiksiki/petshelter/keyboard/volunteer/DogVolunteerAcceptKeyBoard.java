@@ -1,4 +1,4 @@
-package ru.fiksiki.petshelter.keyboard;
+package ru.fiksiki.petshelter.keyboard.volunteer;
 
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
@@ -9,16 +9,16 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class VolunteerAcceptKeyBoard {
+public class DogVolunteerAcceptKeyBoard {
 
 
     public InlineKeyboardMarkup getKeyBoard(long id) {
         InlineKeyboardButton button1 = new InlineKeyboardButton();
-        button1.setCallbackData(CommandName.ACCEPT_USER_QUERY.getCommandName() + "&&" + id);
+        button1.setCallbackData(CommandName.ACCEPT_DOG_USER_QUERY.getCommandName() + "&&" + id);
         button1.setText("Принять запрос пользователя");
         InlineKeyboardButton button2 = new InlineKeyboardButton();
         button2.setText("Отклонить запрос пользователя");
-        button2.setCallbackData(CommandName.DECLINE_USER_QUERY.getCommandName());
+        button2.setCallbackData(CommandName.DECLINE_DOG_USER_QUERY.getCommandName());
         List<List<InlineKeyboardButton>> keyboard = new ArrayList<>();
         keyboard.add(createButtonsLine(button1));
         keyboard.add(createButtonsLine(button2));
