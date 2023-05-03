@@ -1,6 +1,8 @@
 package ru.fiksiki.petshelter.step;
 
 import lombok.extern.log4j.Log4j;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
@@ -11,6 +13,7 @@ import ru.fiksiki.petshelter.services.VolunteerDogService;
 
 
 @Log4j
+@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 @Service
 public class CreateVolunteerDogStep extends Step {
 
@@ -71,7 +74,6 @@ public class CreateVolunteerDogStep extends Step {
                                                                                        .getChatId() + " последнее " + "сообщение: " + update
                         .getMessage().getText());
                 break;
-
         }
     }
 
