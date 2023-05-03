@@ -19,10 +19,7 @@ public class VolunteerDogServiceImpl implements VolunteerDogService {
 
     @Override
     public List<VolunteerDog> getAll() {
-       //return volunteerRepository.findAll();
-        VolunteerDog anton = new VolunteerDog();
-        anton.setId(420046312);
-        return List.of(anton);
+       return volunteerRepository.findAll();
     }
 
     @Override

@@ -19,10 +19,7 @@ public class VolunteerCatServiceImpl implements VolunteerCatService {
 
     @Override
     public List<VolunteerCat> getAll() {
-       //return volunteerRepository.findAll();
-        VolunteerCat anton = new VolunteerCat();
-        anton.setId(420046312);
-        return List.of(anton);
+       return volunteerRepository.findAll();
     }
 
     @Override
