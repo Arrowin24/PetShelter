@@ -22,7 +22,7 @@ public class CreateUserDogStep extends Step {
     private final static String ADD_NAME_TEXT = "Введите контактный телефон: ";
     private final static String ADD_PHONE_TEXT = "Введите контактную почту: ";
     private final static String ADD_MAIL_TEXT = "Данные приняты!";
-    private final static String FINISH_TEXT = "Вы зарегистрировались как потенцеальный хозяин кошки/кота!";
+    private final static String FINISH_TEXT = "Вы зарегистрировались как потенцеальный хозяин собаки";
     private final static String ERROR_TEXT = "Произошла непредвиденная ошибка! Попробуйте еще раз зарегистрироваться";
 
 
