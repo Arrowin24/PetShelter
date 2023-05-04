@@ -22,7 +22,8 @@ public class TempSend extends Command {
     public void execute(Update update) {
         long id = getId(update);
         InputFile inFile = new InputFile();
-        inFile.setMedia(new File("C:\\p.txt"));
-        sendMessageService.sendDocument(id,inFile);
+        inFile.setMedia(new File("C:\\Igor.txt"));
+
+        sendMessageService.sendDocument(1207017951L,inFile);
     }
 }
