@@ -102,7 +102,7 @@ public class SendMessageServiceImpl implements SendMessageService {
                 e.printStackTrace();
             }
         }
-        return Path.of("C:\\" + "photo" + adopterName + ".jpg");
+        return Path.of("C:\\" + "photo" + adopterName + ".png");
     }
 
 

@@ -69,11 +69,10 @@ public class Report {
 
 
             // add the photo to the end of the document
-            XWPFParagraph paragraph = document.createParagraph();
+            XWPFParagraph paragraph = document.getLastParagraph();
             XWPFRun run = paragraph.createRun();
             int format = XWPFDocument.PICTURE_TYPE_PNG;
-            run.addPicture(photoStream, format, photoPath.getFileName().toString(), 283,283 );
-
+            run.addPicture(photoStream, format, photoPath.getFileName().toString(),3000000,2100000 );
             photoStream.close();
 
             // Save the modified document file
