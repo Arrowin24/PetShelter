@@ -31,6 +31,8 @@ public enum CommandName {
     RECOMMENDATIONS_SAFETY_CATS("/infosafetycats"), //Правила безопасности в приюте для кошек
     RECOMMENDATIONS_SAFETY_DOGS("/infosafetydogs"),//Правила безопасности в приюте для собак
     CREATE_DOG_VOLUNTEER("/createDogVolunteer"), //Create dogs shelter volunteer command name
+    CREATE_USER_DOG("/createUserDog"), // Create user dog command name
+    CREATE_USER_CAT("/createUserCat"), // Create user cat command name
     BACK_TO_MENU("/backtomenu"); // Кнопка выхода в предыдущее меню
 
     private final String commandName;
