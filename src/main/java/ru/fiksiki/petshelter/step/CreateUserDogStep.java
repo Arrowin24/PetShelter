@@ -1,53 +1,50 @@
 package ru.fiksiki.petshelter.step;
 
 import lombok.extern.log4j.Log4j;
-import org.springframework.beans.factory.config.ConfigurableBeanFactory;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import ru.fiksiki.petshelter.keyboard.StartKeyBoard;
-import ru.fiksiki.petshelter.model.VolunteerDog;
+import ru.fiksiki.petshelter.model.UserCat;
+import ru.fiksiki.petshelter.model.UserDog;
 import ru.fiksiki.petshelter.services.SendMessageService;
-import ru.fiksiki.petshelter.services.VolunteerDogService;
-
+import ru.fiksiki.petshelter.services.UserCatService;
+import ru.fiksiki.petshelter.services.UserDogService;
 
 @Log4j
-@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 @Service
-public class CreateVolunteerDogStep extends Step {
+public class CreateUserDogStep extends Step {
 
-    private final VolunteerDog volunteerDog;
+    private final UserDog userDog;
+    private final UserDogService userDogService;
 
-    private final VolunteerDogService volunteerDogService;
     private final static String START_TEXT = "Введите имя: ";
     private final static String ADD_NAME_TEXT = "Введите контактный телефон: ";
     private final static String ADD_PHONE_TEXT = "Введите контактную почту: ";
     private final static String ADD_MAIL_TEXT = "Данные приняты!";
-    private final static String FINISH_TEXT = "Вы зарегистрировались как волонтер!";
+    private final static String FINISH_TEXT = "Вы зарегистрировались как потенцеальный хозяин собаки";
     private final static String ERROR_TEXT = "Произошла непредвиденная ошибка! Попробуйте еще раз зарегистрироваться";
 
-    public CreateVolunteerDogStep(
-            StepsContainer container, SendMessageService sendBotMessageService, VolunteerDogService volunteerDogService)
-    {
+
+    public CreateUserDogStep(StepsContainer container, SendMessageService sendBotMessageService, UserDogService userDogService) {
         super(container, sendBotMessageService);
-        this.volunteerDog = new VolunteerDog();
-        this.volunteerDogService = volunteerDogService;
+        this.userDog = new UserDog();
+        this.userDogService = userDogService;
     }
 
-    public VolunteerDog getVolunteerDog() {
-        return volunteerDog;
+    public UserDog getUserDog() {
+        return userDog;
     }
 
     @Override
     public void startStep(Update update) {
         long id = getId(update);
-        CreateVolunteerDogStep createVolunteerDogStep = new CreateVolunteerDogStep(getContainer(),
-                                                                                   getSendMessageService(),
-                                                                                   volunteerDogService);
-        createVolunteerDogStep.setStep(StepName.ONE);
-        createVolunteerDogStep.getVolunteerDog().setId(id);
-        getContainer().putStep(id, createVolunteerDogStep);
+        CreateUserDogStep createUserDogStep = new CreateUserDogStep(getContainer(),
+                getSendMessageService(),
+                userDogService);
+        createUserDogStep.setStep(StepName.ONE);
+        createUserDogStep.getUserDog().setId(id);
+        getContainer().putStep(id, createUserDogStep);
         SendMessage message = new SendMessage();
         message.setChatId(id);
         message.setText(START_TEXT);
@@ -71,16 +68,17 @@ public class CreateVolunteerDogStep extends Step {
             default:
                 errorStep(update);
                 log.debug("Произошла ошибка регистрации. У пользователя с id=" + update.getMessage()
-                                                                                       .getChatId() + " последнее " + "сообщение: " + update
+                        .getChatId() + " последнее " + "сообщение: " + update
                         .getMessage().getText());
                 break;
+
         }
     }
 
     private void addNameStep(Update update) {
         long id = getId(update);
         String name = update.getMessage().getText();
-        volunteerDog.setName(name);
+        userDog.setName(name);
         setStep(StepName.TWO);
         SendMessage message = new SendMessage();
         message.setChatId(id);
@@ -91,7 +89,7 @@ public class CreateVolunteerDogStep extends Step {
     private void addPhoneStep(Update update) {
         long id = getId(update);
         String phone = update.getMessage().getText();
-        volunteerDog.setPhone(phone);
+        userDog.setPhone(phone);
         setStep(StepName.THREE);
         SendMessage message = new SendMessage();
         message.setChatId(id);
@@ -102,7 +100,7 @@ public class CreateVolunteerDogStep extends Step {
     private void addMailStep(Update update) {
         long id = getId(update);
         String mail = update.getMessage().getText();
-        volunteerDog.setMail(mail);
+        userDog.setMail(mail);
         setStep(StepName.FOUR);
         SendMessage message = new SendMessage();
         message.setChatId(id);
@@ -112,11 +110,11 @@ public class CreateVolunteerDogStep extends Step {
 
     private void finishStep(Update update) {
         long id = getId(update);
-        volunteerDogService.create(volunteerDog);
+        userDogService.create(userDog);
         getContainer().deleteStep(id);
         SendMessage message = new SendMessage();
         message.setChatId(id);
-        message.setText(FINISH_TEXT + "\n" + volunteerDogService.read(id).toText());
+        message.setText(FINISH_TEXT + "\n" + userDogService.read(id).toText());
         message.setReplyMarkup(new StartKeyBoard().getKeyBoard());
         getSendMessageService().sendMessage(message);
     }
@@ -130,6 +128,5 @@ public class CreateVolunteerDogStep extends Step {
         message.setReplyMarkup(new StartKeyBoard().getKeyBoard());
         getSendMessageService().sendMessage(message);
     }
-
 
 }

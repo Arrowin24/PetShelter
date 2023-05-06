@@ -12,4 +12,6 @@ public interface VolunteerDogService {
     void create(VolunteerDog volunteerDog);
 
     VolunteerDog read(long id);
+
+
 }

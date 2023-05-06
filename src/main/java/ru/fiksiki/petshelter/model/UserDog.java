@@ -25,4 +25,8 @@ public class UserDog {
     @Column(name="phone")
     private String phone;
 
+    public String toText() {
+        return "Потенцеальный хозяин собаки с  ID: " + id + "\n Имя: " + name + "\n Телефон: "+phone;
+    }
+
 }
