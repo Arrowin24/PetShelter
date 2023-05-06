@@ -16,7 +16,7 @@ public class DogsKeyBoard implements KeyBoard{
         InlineKeyboardButton button4 = createButton("Рекомендации по технике безопасности", CommandName.RECOMMENDATIONS_SAFETY_DOGS);
         InlineKeyboardButton button5 = createButton("Как взять животное из приюта", CommandName.GET_PET_IS_SHELTER);
         InlineKeyboardButton button6 = createButton("Прислать отчет о питомце", CommandName.GET_REPORT_IS_PET);
-        InlineKeyboardButton button7 = createButton("Позвать волонтера", CommandName.GET_VOLUNTEERS);
+        InlineKeyboardButton button7 = createButton("Позвать волонтера", CommandName.GET_DOG_VOLUNTEER);
         List<List<InlineKeyboardButton>> keyboard = new ArrayList<>();
         keyboard.add(createButtonsLine(button1));
         keyboard.add(createButtonsLine(button2));

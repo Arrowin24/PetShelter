@@ -11,12 +11,10 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 import ru.fiksiki.petshelter.command.CommandContainer;
 import ru.fiksiki.petshelter.step.StepsContainer;
 
-
-
 @Controller
 @Component
-public class TelegramBotController extends TelegramLongPollingBot {
-
+public class TelegramBotController  extends TelegramLongPollingBot {
+    public static String SPLIT = "&&";
     public static String COMMAND_PREFIX = "/";
     @Value("${telegram.bot.name}") private String botName;
 
@@ -55,12 +53,12 @@ public class TelegramBotController extends TelegramLongPollingBot {
         if (stepsContainer.isContains(update)) {     // если это продолжение многостадийной команды
             stepsContainer.getStep(update).doStep(update);
         }
-        if (message.startsWith(COMMAND_PREFIX)) {   // если это обычная команда
-            commandContainer.retrieveCommand(message).execute(update);
-        } else {
+        else if (message.startsWith(COMMAND_PREFIX)) {   // если это обычная команда
+            String command = message.split(SPLIT)[0];
+            commandContainer.retrieveCommand(command).execute(update);
+        }
+        else {
             System.out.println(message);
         }
     }
-
-
 }

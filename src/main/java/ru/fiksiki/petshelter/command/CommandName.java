@@ -19,7 +19,14 @@ public enum CommandName {
     INFO_SHELTER("/getInfo"), // Узнать информацию о приюте
     GET_PET_IS_SHELTER("/getPet"),//Как взять животное из приюта
     GET_REPORT_IS_PET("/getReport"), // Прислать отчет о питомце
-    GET_VOLUNTEERS("/getVolunteers"), // Позвать волонтера
+    GET_DOG_VOLUNTEER("/getDogVolunteer"), // Позвать волонтера из приюта для собак
+    GET_CAT_VOLUNTEER("/getCatVolunteer"), // Позвать волонтера из приюта для кошек
+    ACCEPT_DOG_USER_QUERY("/acDQ"), //Принять запрос от пользователя. Приют для собак
+    DECLINE_DOG_USER_QUERY("/dcDQ"),//Отклонить запрос от пользователя. Приют для собак
+    ACCEPT_CAT_USER_QUERY("/acCQ"), //Принять запрос от пользователя. Приют для кошек
+    DECLINE_CAT_USER_QUERY("/dcCQ"),//Отклонить запрос от пользователя. Приют для кошек
+    FINISH_TALK_DOG_USER("/finDog"), //Завершить разговор с пользователем. Приют для собак
+    FINISH_TALK_CAT_USER("/finCat"), //Завершить разговор с пользователем. Приют для кошек
     INFO_CATS("/infocats"), //Информация о приюте кошек
     INFO_DOGS("/infodogs"), //Информация о приюте собак
     INFO_WORK_SCHEDULE_DOGS("/worksheduledogs"), // Информация о времени работы приюта для собак и адрес приюта
@@ -31,6 +38,7 @@ public enum CommandName {
     RECOMMENDATIONS_SAFETY_CATS("/infosafetycats"), //Правила безопасности в приюте для кошек
     RECOMMENDATIONS_SAFETY_DOGS("/infosafetydogs"),//Правила безопасности в приюте для собак
     CREATE_DOG_VOLUNTEER("/createDogVolunteer"), //Create dogs shelter volunteer command name
+    CREATE_CAT_VOLUNTEER("/createCatVolunteer"), //Create cats shelter volunteer command name
     CREATE_USER_DOG("/createUserDog"), // Create user dog command name
     CREATE_USER_CAT("/createUserCat"), // Create user cat command name
     BACK_TO_MENU("/backtomenu"); // Кнопка выхода в предыдущее меню

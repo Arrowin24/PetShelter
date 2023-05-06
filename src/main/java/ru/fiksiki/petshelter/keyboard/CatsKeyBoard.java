@@ -3,7 +3,6 @@ package ru.fiksiki.petshelter.keyboard;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
 import ru.fiksiki.petshelter.command.CommandName;
-import ru.fiksiki.petshelter.command.ShelterInfoCommand;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +16,7 @@ public class CatsKeyBoard implements KeyBoard{
         InlineKeyboardButton button4 = createButton("Рекомендации по технике безопасности", CommandName.RECOMMENDATIONS_SAFETY_CATS);
         InlineKeyboardButton button5 = createButton("Как взять животное из приюта", CommandName.GET_PET_IS_SHELTER);
         InlineKeyboardButton button6 = createButton("Прислать отчет о питомце", CommandName.GET_REPORT_IS_PET);
-        InlineKeyboardButton button7 = createButton("Позвать волонтера", CommandName.GET_VOLUNTEERS);
+        InlineKeyboardButton button7 = createButton("Позвать волонтера", CommandName.GET_CAT_VOLUNTEER);
         List<List<InlineKeyboardButton>> keyboard = new ArrayList<>();
         keyboard.add(createButtonsLine(button1));
         keyboard.add(createButtonsLine(button2));
