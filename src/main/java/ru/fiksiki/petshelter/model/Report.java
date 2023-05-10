@@ -56,7 +56,6 @@ public class Report {
         throw new RuntimeException();
     }
 
-    //НЕ РАБОТАЕТ!!!!!
      public void insertPhoto(Path photoPath, Path docPath) {
         try {
             // Open the existing document file

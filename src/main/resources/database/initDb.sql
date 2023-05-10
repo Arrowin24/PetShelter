@@ -61,22 +61,22 @@ CREATE TABLE IF NOT EXISTS dogs
     info varchar(300)
 );
 
-
+DROP TABLE probation_dog;
+DROP TABLE adopter_dog;
 CREATE TABLE IF NOT EXISTS adopter_dog
 (
-  id  BIGINT PRIMARY KEY,
-  user_id BIGINT NOT NULL,
+  adopter_id BIGINT PRIMARY KEY,
   dog_id BIGINT NOT NULL,
-  FOREIGN KEY (user_id) REFERENCES user_dog(id),
+  FOREIGN KEY (adopter_id) REFERENCES user_dog(id),
   FOREIGN KEY (dog_id) REFERENCES dogs
 );
 
 CREATE TABLE IF NOT EXISTS probation_dog
 (
-    id           BIGINT PRIMARY KEY,
-    adopter_id   BIGINT NOT NULL,
+    adopter_id   BIGINT PRIMARY KEY,
     volunteer_id BIGINT NOT NULL,
+    last_rep DATE,
     day_left    INT NOT NULL,
-    FOREIGN KEY (adopter_id) REFERENCES adopter_dog (id),
+    FOREIGN KEY (adopter_id) REFERENCES adopter_dog (adopter_id),
     FOREIGN KEY (volunteer_id) REFERENCES volunteer_dog (id)
 );

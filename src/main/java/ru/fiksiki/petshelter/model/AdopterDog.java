@@ -14,11 +14,9 @@ import javax.persistence.*;
 @AllArgsConstructor
 public class AdopterDog {
     @Id
-    @Column(name="id")
+    @Column(name="adopter_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @Column(name="user_id")
-    private long userId;
     @Column(name="dog_id")
     private long dogId;
 }

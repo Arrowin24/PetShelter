@@ -3,6 +3,7 @@ package ru.fiksiki.petshelter.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "probation_dog")
@@ -13,11 +14,11 @@ import javax.persistence.*;
 @AllArgsConstructor
 public class ProbationDog {
     @Id
-    @Column(name = "id")
+    @Column(name = "adopter_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @Column(name = "adopter_id") private long adopterId;
-    @Column(name = "volunteer_id") private long dogId;
+    @Column(name = "volunteer_id") private long volunteerId;
+    @Column(name = "last_rep") private LocalDate lastReport;
     @Column(name = "day_left") private int dayLeft;
 
 }

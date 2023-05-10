@@ -18,7 +18,8 @@ public enum CommandName {
     CATS("/cats"), //Команда вызова приюта для кошек
     INFO_SHELTER("/getInfo"), // Узнать информацию о приюте
     GET_PET_IS_SHELTER("/getPet"),//Как взять животное из приюта
-    GET_REPORT_IS_PET("/getReport"), // Прислать отчет о питомце
+    REPORT_DOG("/report_dog"), // Прислать отчет о питомце собаке
+    REPORT_CAT("/report_cat"), // Прислать отчет о питомце кошке
     GET_DOG_VOLUNTEER("/getDogVolunteer"), // Позвать волонтера из приюта для собак
     GET_CAT_VOLUNTEER("/getCatVolunteer"), // Позвать волонтера из приюта для кошек
     ACCEPT_DOG_USER_QUERY("/acDQ"), //Принять запрос от пользователя. Приют для собак
@@ -33,8 +34,15 @@ public enum CommandName {
     INFO_WORK_SCHEDULE_CATS("/workshedulecats"),// Информация о времени работы приюта для кошек и адрес приюта
     CONTACT_SECURITY_CATS("/contactsecuritycats"), //Контактные данные охраны для оформления пропуска в приют для кошек
     CONTACT_SECURITY_DOGS("/contactsecuritydogs"), //Контактные данные охраны для оформления пропуска в приют для собак
-    REPORT_DOG("/report_dog"),
+
     CHECK("/check"),
+
+    GOOD_REPORT_DOG("/goodReportDog"),
+    BAD_REPORT_DOG("/badReportDog"),
+    ADD_14_DAYS_DOG("/add14daysDog"),
+    ADD_30_DAYS_DOG("/add30daysDog"),
+    FAILED_PROBATION_DOG("failedDog"),
+
     RECOMMENDATIONS_SAFETY_CATS("/infosafetycats"), //Правила безопасности в приюте для кошек
     RECOMMENDATIONS_SAFETY_DOGS("/infosafetydogs"),//Правила безопасности в приюте для собак
     CREATE_DOG_VOLUNTEER("/createDogVolunteer"), //Create dogs shelter volunteer command name

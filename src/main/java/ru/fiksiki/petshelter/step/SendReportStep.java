@@ -7,7 +7,11 @@ import org.springframework.stereotype.Service;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.InputFile;
 import org.telegram.telegrambots.meta.api.objects.Update;
+import ru.fiksiki.petshelter.keyboard.answer.ReportDogAnswerKeyBoard;
+import ru.fiksiki.petshelter.model.ProbationDog;
 import ru.fiksiki.petshelter.model.Report;
+import ru.fiksiki.petshelter.model.UserDog;
+import ru.fiksiki.petshelter.services.ProbationDogService;
 import ru.fiksiki.petshelter.services.SendMessageService;
 
 import java.nio.file.Path;
@@ -16,18 +20,20 @@ import java.nio.file.Path;
 @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 @Service
 public class SendReportStep extends Step {
+    private final Report report;
 
+    private final ProbationDogService probationDogService;
     private final static String START_TEXT = "Пожалуйста, опишите одним сообщением сегодняшний рацион питомца: ";
     private final static String GET_DIET = "Пожалуйста, опишите одним сообщением самочувствие питомца: ";
     private final static String GET_BEHAVIOR =
             "Пожалуйста, опишите одним сообщением изменение в его поведении или " + "приобретенные привычки: ";
     private final static String GET_PHOTO = "Пожалуйста, отправьте фотографию вашего питомца: ";
-    private final Report report;
 
     public SendReportStep(
-            StepsContainer container, SendMessageService sendBotMessageService)
+            StepsContainer container, SendMessageService sendBotMessageService, ProbationDogService probationDogService)
     {
         super(container, sendBotMessageService);
+        this.probationDogService = probationDogService;
         report = new Report();
     }
 
@@ -56,7 +62,8 @@ public class SendReportStep extends Step {
                 getBehavior(update);
                 break;
             case FOUR:
-                getPhoto(update);
+                getPhoto();
+                sendReport(update);
                 break;
             default:
                 //    errorStep(update);
@@ -100,14 +107,30 @@ public class SendReportStep extends Step {
         getSendMessageService().sendMessage(message);
     }
 
-    private void getPhoto(Update update) {
-        long id = getId(update);
+    private void getPhoto() {
         setStep(StepName.FIVE);
-        Path doc = report.doReportFile("Igor");
-        Path photo = getSendMessageService().savePhotoToReport(update,"Igor");
-        report.insertPhoto(photo,doc);
-        getSendMessageService().sendDocument(id, new InputFile(doc.toFile()));
+    }
+
+    private void sendReport(Update update) {
+        long id = getId(update);
+        if (probationDogService.isProbationDog(update.getMessage().getChatId())) {
+            UserDog user = probationDogService.getUserDog(id);
+            ProbationDog probationDog = probationDogService.read(id);
+            Path doc = report.doReportFile(user.getName());
+            Path photo = getSendMessageService().savePhotoToReport(update, user.getName());
+            report.insertPhoto(photo, doc);
+            getSendMessageService().sendDocument(probationDog.getVolunteerId(), new InputFile(doc.toFile()));
+            SendMessage message = new SendMessage();
+            message.setChatId(probationDog.getVolunteerId());
+            message.setText("Выберете решение по отчету");
+            message.setReplyMarkup(new ReportDogAnswerKeyBoard().getKeyBoard(id));
+            getSendMessageService().sendMessage(message);
+        }
+        finishStep(id);
     }
 
 
+    private void finishStep(Long id) {
+        getContainer().deleteStep(id);
+    }
 }

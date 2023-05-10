@@ -11,7 +11,6 @@ import java.util.stream.Collectors;
 
 public class CatVolunteerAcceptKeyBoard {
 
-
     public InlineKeyboardMarkup getKeyBoard(long id) {
         InlineKeyboardButton button1 = new InlineKeyboardButton();
         button1.setCallbackData(CommandName.ACCEPT_CAT_USER_QUERY.getCommandName() + "&&" + id);
