@@ -5,10 +5,8 @@ import org.springframework.stereotype.Service;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import ru.fiksiki.petshelter.keyboard.StartKeyBoard;
-import ru.fiksiki.petshelter.model.UserCat;
 import ru.fiksiki.petshelter.model.UserDog;
 import ru.fiksiki.petshelter.services.SendMessageService;
-import ru.fiksiki.petshelter.services.UserCatService;
 import ru.fiksiki.petshelter.services.UserDogService;
 
 @Log4j
@@ -22,7 +20,7 @@ public class CreateUserDogStep extends Step {
     private final static String ADD_NAME_TEXT = "Введите контактный телефон: ";
     private final static String ADD_PHONE_TEXT = "Введите контактную почту: ";
     private final static String ADD_MAIL_TEXT = "Данные приняты!";
-    private final static String FINISH_TEXT = "Вы зарегистрировались как потенцеальный хозяин собаки";
+    private final static String FINISH_TEXT = "Вы зарегистрировались как потенциальный хозяин собаки";
     private final static String ERROR_TEXT = "Произошла непредвиденная ошибка! Попробуйте еще раз зарегистрироваться";
 
 

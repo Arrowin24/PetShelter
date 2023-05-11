@@ -104,6 +104,4 @@ public class SendMessageServiceImpl implements SendMessageService {
         }
         return Path.of("C:\\" + "photo" + adopterName + ".png");
     }
-
-
 }

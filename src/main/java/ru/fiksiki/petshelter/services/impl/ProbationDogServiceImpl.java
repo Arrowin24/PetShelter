@@ -6,7 +6,6 @@ import ru.fiksiki.petshelter.model.ProbationDog;
 import ru.fiksiki.petshelter.model.UserDog;
 import ru.fiksiki.petshelter.services.ProbationDogService;
 import ru.fiksiki.petshelter.services.UserDogService;
-import ru.fiksiki.petshelter.services.repository.AdopterDogRepository;
 import ru.fiksiki.petshelter.services.repository.ProbationDogRepository;
 
 import java.time.LocalDate;
@@ -14,14 +13,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class ProbationDogDogServiceImpl implements ProbationDogService {
+public class ProbationDogServiceImpl implements ProbationDogService {
 
     private final ProbationDogRepository probationDogRepository;
     private final UserDogService userDogService;
 
 
-    public ProbationDogDogServiceImpl(
-            ProbationDogRepository probationDogRepository, AdopterDogRepository adopterDogRepository,
+    public ProbationDogServiceImpl(
+            ProbationDogRepository probationDogRepository,
             UserDogService userDogService)
     {
         this.probationDogRepository = probationDogRepository;

@@ -47,12 +47,12 @@ public class RepeatReportCommand {
     }
 
 
-    private boolean isProbationNow (ProbationDog probationDog) {
+    private boolean isProbationNow(ProbationDog probationDog) {
         if (probationDog.getLastReport().isAfter(LocalDate.now().minusDays(1))) {
             probationDog.setDayLeft(probationDog.getDayLeft() - 1);
             probationDogService.updateDayLeft(probationDog);
         }
-        if (probationDog.getDayLeft()<=0){
+        if (probationDog.getDayLeft() <= 0) {
             probationDogService.deleteProbation(probationDog);
             sendFinishProbation(probationDog);
             return false;
@@ -60,12 +60,10 @@ public class RepeatReportCommand {
         return true;
     }
 
-    private void sendFinishProbation(ProbationDog probationDog){
+    private void sendFinishProbation(ProbationDog probationDog) {
         SendMessage message = new SendMessage();
         message.setChatId(probationDog.getId());
         message.setText("Вы прекрасный хозяин животного. Вам больше не нужно отправлять отчеты. Большое вам спасибо");
         sendMessageService.sendMessage(message);
     }
-
-
 }

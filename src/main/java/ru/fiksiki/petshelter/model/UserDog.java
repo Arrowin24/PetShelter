@@ -26,7 +26,7 @@ public class UserDog {
     private String phone;
 
     public String toText() {
-        return "РџРѕС‚РµРЅС†РµР°Р»СЊРЅС‹Р№ С…РѕР·СЏРёРЅ СЃРѕР±Р°РєРё СЃ  ID: " + id + "\n РРјСЏ: " + name + "\n РўРµР»РµС„РѕРЅ: "+phone;
+        return "Потенцеальный хозяин собаки с  ID: " + id + "\n Имя: " + name + "\n Телефон: "+phone;
     }
 
 }

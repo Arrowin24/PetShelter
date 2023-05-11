@@ -12,7 +12,7 @@ import ru.fiksiki.petshelter.services.SendMessageService;
 @Component
 public class UnknownCommand extends Command {
 
-    private final String TEXT = "РР·РІРёРЅРёС‚Рµ СЏ РїРѕРєР° С‡С‚Рѕ РЅРµ РјРѕРіСѓ РІР°Рј СЃ СЌС‚РёРј РїРѕРјРѕС‡СЊ. РњРѕР¶РµС‚Рµ СЃ РґР°РЅРЅС‹Рј РІРѕРїСЂРѕСЃРѕРј РѕР±СЂР°С‚РёС‚СЊСЃСЏ Рє РІРѕР»РѕРЅС‚РµСЂСѓ.";
+    private final String TEXT = "Извините я пока что не могу вам с этим помочь. Можете с данным вопросом обратиться к волонтеру.";
 
     private final SendMessageService sendMessageService;
 
