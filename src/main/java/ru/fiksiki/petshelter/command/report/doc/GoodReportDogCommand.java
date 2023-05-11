@@ -1,10 +1,11 @@
-package ru.fiksiki.petshelter.command.report;
+package ru.fiksiki.petshelter.command.report.doc;
 
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import ru.fiksiki.petshelter.command.Command;
 import ru.fiksiki.petshelter.command.CommandName;
+import ru.fiksiki.petshelter.keyboard.DogsKeyBoard;
 import ru.fiksiki.petshelter.services.ProbationDogService;
 import ru.fiksiki.petshelter.services.SendMessageService;
 
@@ -50,6 +51,7 @@ public class GoodReportDogCommand extends Command {
         message.setText(
                 "Вы отправили хороший отчет. Продолжайте в том же духе"); // sets the message to inform the user that
         // their report was good
+        message.setReplyMarkup(new DogsKeyBoard().getKeyBoard()); // add main menu keyboard
         probationDogService.updateLastReportDate(userId,
                                                  LocalDate.now()); // updates the user's last report timestamp in the
         // ProbationDogService

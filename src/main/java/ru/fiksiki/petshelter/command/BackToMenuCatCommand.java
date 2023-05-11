@@ -7,12 +7,12 @@ import ru.fiksiki.petshelter.keyboard.CatsKeyBoard;
 import ru.fiksiki.petshelter.services.SendMessageService;
 
 @Component
-public class BackToMenuCommand extends Command{
+public class BackToMenuCatCommand extends Command{
     private final SendMessageService sendMessageService;
 
 
-    public BackToMenuCommand(SendMessageService sendBotMessageService) {
-        super(CommandName.BACK_TO_MENU);
+    public BackToMenuCatCommand(SendMessageService sendBotMessageService) {
+        super(CommandName.BACK_TO_MENU_CAT);
         this.sendMessageService = sendBotMessageService;
 
     }

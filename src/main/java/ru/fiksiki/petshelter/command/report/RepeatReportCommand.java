@@ -5,7 +5,9 @@ import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 
 import ru.fiksiki.petshelter.keyboard.ReportDogKeyBoard;
+import ru.fiksiki.petshelter.model.ProbationCat;
 import ru.fiksiki.petshelter.model.ProbationDog;
+import ru.fiksiki.petshelter.services.ProbationCatService;
 import ru.fiksiki.petshelter.services.SendMessageService;
 import ru.fiksiki.petshelter.services.ProbationDogService;
 
@@ -18,9 +20,13 @@ public class RepeatReportCommand {
 
     private final ProbationDogService probationDogService;
 
-    public RepeatReportCommand(SendMessageService sendMessageService, ProbationDogService probationDogService) {
+    private final ProbationCatService probationCatService;
+
+    public RepeatReportCommand(SendMessageService sendMessageService, ProbationDogService probationDogService,
+                               ProbationCatService probationCatService) {
         this.sendMessageService = sendMessageService;
         this.probationDogService = probationDogService;
+        this.probationCatService = probationCatService;
     }
 
     @Scheduled(cron = "00 00 12 * * *")
@@ -40,10 +46,15 @@ public class RepeatReportCommand {
     @Scheduled(cron = "00 00 12 * * *")
     private void reportCat() {
         SendMessage message = new SendMessage();
-        message.setChatId(1207017951L);
-        message.setText("Пожалуйста отправьте отчет:");
-        message.setReplyMarkup(new ReportDogKeyBoard().getKeyBoard());
-        sendMessageService.sendMessage(message);
+        List<ProbationCat> adoptersId = probationCatService.readAll();
+        for (ProbationCat probationCat : adoptersId) {
+            if (isProbationNow(probationCat)) {
+                message.setChatId(probationCat.getId());
+                message.setText("Пожалуйста отправьте отчет:");
+                message.setReplyMarkup(new ReportDogKeyBoard().getKeyBoard());
+                sendMessageService.sendMessage(message);
+            }
+        }
     }
 
 
@@ -54,15 +65,28 @@ public class RepeatReportCommand {
         }
         if (probationDog.getDayLeft() <= 0) {
             probationDogService.deleteProbation(probationDog);
-            sendFinishProbation(probationDog);
+            sendFinishProbation(probationDog.getId());
             return false;
         }
         return true;
     }
 
-    private void sendFinishProbation(ProbationDog probationDog) {
+    private boolean isProbationNow(ProbationCat probationCat) {
+        if (probationCat.getLastReport().isAfter(LocalDate.now().minusDays(1))) {
+            probationCat.setDayLeft(probationCat.getDayLeft() - 1);
+            probationCatService.updateDayLeft(probationCat);
+        }
+        if (probationCat.getDayLeft() <= 0) {
+            probationCatService.deleteProbation(probationCat);
+            sendFinishProbation(probationCat.getId());
+            return false;
+        }
+        return true;
+    }
+
+    private void sendFinishProbation(long id) {
         SendMessage message = new SendMessage();
-        message.setChatId(probationDog.getId());
+        message.setChatId(id);
         message.setText("Вы прекрасный хозяин животного. Вам больше не нужно отправлять отчеты. Большое вам спасибо");
         sendMessageService.sendMessage(message);
     }

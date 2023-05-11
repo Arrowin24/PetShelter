@@ -41,7 +41,12 @@ public enum CommandName {
     BAD_REPORT_DOG("/badReportDog"),
     ADD_14_DAYS_DOG("/add14daysDog"),
     ADD_30_DAYS_DOG("/add30daysDog"),
-    FAILED_PROBATION_DOG("failedDog"),
+    FAILED_PROBATION_DOG("/failedDog"),
+    GOOD_REPORT_CAT("/goodReportCat"),
+    BAD_REPORT_CAT("/badReportCat"),
+    ADD_14_DAYS_CAT("/add14daysCat"),
+    ADD_30_DAYS_CAT("/add30daysCat"),
+    FAILED_PROBATION_CAT("failedCat"),
 
     RECOMMENDATIONS_SAFETY_CATS("/infosafetycats"), //Правила безопасности в приюте для кошек
     RECOMMENDATIONS_SAFETY_DOGS("/infosafetydogs"),//Правила безопасности в приюте для собак
@@ -49,7 +54,8 @@ public enum CommandName {
     CREATE_CAT_VOLUNTEER("/createCatVolunteer"), //Create cats shelter volunteer command name
     CREATE_USER_DOG("/createUserDog"), // Create user dog command name
     CREATE_USER_CAT("/createUserCat"), // Create user cat command name
-    BACK_TO_MENU("/backtomenu"); // Кнопка выхода в предыдущее меню
+    BACK_TO_MENU_CAT("/backToMenuCat"), // Кнопка выхода в предыдущее меню
+    BACK_TO_MENU_DOG("/backToMenuDog"); // Кнопка выхода в предыдущее меню
 
     private final String commandName;
 }

@@ -55,10 +55,11 @@ public class TelegramBotController  extends TelegramLongPollingBot {
         }
         else if (message.startsWith(COMMAND_PREFIX)) {   // если это обычная команда
             String command = message.split(SPLIT)[0];
+            System.out.println(message);
             commandContainer.retrieveCommand(command).execute(update);
         }
         else {
-            System.out.println(message);
+            System.out.println();
         }
     }
 }

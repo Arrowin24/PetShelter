@@ -1,10 +1,11 @@
-package ru.fiksiki.petshelter.command.report;
+package ru.fiksiki.petshelter.command.report.doc;
 
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import ru.fiksiki.petshelter.command.Command;
 import ru.fiksiki.petshelter.command.CommandName;
+import ru.fiksiki.petshelter.keyboard.DogsKeyBoard;
 import ru.fiksiki.petshelter.services.SendMessageService;
 
 
@@ -46,6 +47,7 @@ public class BadReportDogCommand extends Command {
         SendMessage message = new SendMessage(); // creates a new message
         message.setChatId(userId); // sets the chat ID to the user ID
         message.setText(TEXT); // sets the message to inform the user to fill out their report more thoroughly
+        message.setReplyMarkup(new DogsKeyBoard().getKeyBoard()); // add main menu keyboard
         sendMessageService.sendMessage(message); // sends the message using the SendMessageService
     }
 }
