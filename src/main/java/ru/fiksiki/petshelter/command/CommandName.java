@@ -10,38 +10,52 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public enum CommandName {
-    START("/start"), //РљРѕРјР°РЅРґР° СЃС‚Р°СЂС‚Р° РґРѕР»СЏ РЅР°С‡Р°Р»Р° СЂР°Р±РѕС‚С‹ СЃ РїСЂРёР»РѕР¶РµРЅРёРµРј
-    HELP("/help"), // РљРѕРјР°РЅРґР° РІС‹Р·РѕРІР° РєРЅРѕРїРєРё РїРѕРјРѕС‰Рё
+    START("/start"), //Команда старта доля начала работы с приложением
+    HELP("/help"), // Команда вызова кнопки помощи
 
     UNKNOWN("/unknown"), // Name of UnknownCommand.java
-    DOGS("/dogs"), // РљРѕРјР°РЅРґР° РІС‹Р·РѕРІР° РїСЂРёСЋС‚Р° РґР»СЏ СЃРѕР±Р°Рє
-    CATS("/cats"), //РљРѕРјР°РЅРґР° РІС‹Р·РѕРІР° РїСЂРёСЋС‚Р° РґР»СЏ РєРѕС€РµРє
-    INFO_SHELTER("/getInfo"), // РЈР·РЅР°С‚СЊ РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ РїСЂРёСЋС‚Рµ
-    GET_PET_IS_SHELTER("/getPet"),//РљР°Рє РІР·СЏС‚СЊ Р¶РёРІРѕС‚РЅРѕРµ РёР· РїСЂРёСЋС‚Р°
-    GET_REPORT_IS_PET("/getReport"), // РџСЂРёСЃР»Р°С‚СЊ РѕС‚С‡РµС‚ Рѕ РїРёС‚РѕРјС†Рµ
-    GET_DOG_VOLUNTEER("/getDogVolunteer"), // РџРѕР·РІР°С‚СЊ РІРѕР»РѕРЅС‚РµСЂР° РёР· РїСЂРёСЋС‚Р° РґР»СЏ СЃРѕР±Р°Рє
-    GET_CAT_VOLUNTEER("/getCatVolunteer"), // РџРѕР·РІР°С‚СЊ РІРѕР»РѕРЅС‚РµСЂР° РёР· РїСЂРёСЋС‚Р° РґР»СЏ РєРѕС€РµРє
-    ACCEPT_DOG_USER_QUERY("/acDQ"), //РџСЂРёРЅСЏС‚СЊ Р·Р°РїСЂРѕСЃ РѕС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ. РџСЂРёСЋС‚ РґР»СЏ СЃРѕР±Р°Рє
-    DECLINE_DOG_USER_QUERY("/dcDQ"),//РћС‚РєР»РѕРЅРёС‚СЊ Р·Р°РїСЂРѕСЃ РѕС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ. РџСЂРёСЋС‚ РґР»СЏ СЃРѕР±Р°Рє
-    ACCEPT_CAT_USER_QUERY("/acCQ"), //РџСЂРёРЅСЏС‚СЊ Р·Р°РїСЂРѕСЃ РѕС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ. РџСЂРёСЋС‚ РґР»СЏ РєРѕС€РµРє
-    DECLINE_CAT_USER_QUERY("/dcCQ"),//РћС‚РєР»РѕРЅРёС‚СЊ Р·Р°РїСЂРѕСЃ РѕС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ. РџСЂРёСЋС‚ РґР»СЏ РєРѕС€РµРє
-    FINISH_TALK_DOG_USER("/finDog"), //Р—Р°РІРµСЂС€РёС‚СЊ СЂР°Р·РіРѕРІРѕСЂ СЃ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј. РџСЂРёСЋС‚ РґР»СЏ СЃРѕР±Р°Рє
-    FINISH_TALK_CAT_USER("/finCat"), //Р—Р°РІРµСЂС€РёС‚СЊ СЂР°Р·РіРѕРІРѕСЂ СЃ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј. РџСЂРёСЋС‚ РґР»СЏ РєРѕС€РµРє
-    INFO_CATS("/infocats"), //РРЅС„РѕСЂРјР°С†РёСЏ Рѕ РїСЂРёСЋС‚Рµ РєРѕС€РµРє
-    INFO_DOGS("/infodogs"), //РРЅС„РѕСЂРјР°С†РёСЏ Рѕ РїСЂРёСЋС‚Рµ СЃРѕР±Р°Рє
-    INFO_WORK_SCHEDULE_DOGS("/worksheduledogs"), // РРЅС„РѕСЂРјР°С†РёСЏ Рѕ РІСЂРµРјРµРЅРё СЂР°Р±РѕС‚С‹ РїСЂРёСЋС‚Р° РґР»СЏ СЃРѕР±Р°Рє Рё Р°РґСЂРµСЃ РїСЂРёСЋС‚Р°
-    INFO_WORK_SCHEDULE_CATS("/workshedulecats"),// РРЅС„РѕСЂРјР°С†РёСЏ Рѕ РІСЂРµРјРµРЅРё СЂР°Р±РѕС‚С‹ РїСЂРёСЋС‚Р° РґР»СЏ РєРѕС€РµРє Рё Р°РґСЂРµСЃ РїСЂРёСЋС‚Р°
-    CONTACT_SECURITY_CATS("/contactsecuritycats"), //РљРѕРЅС‚Р°РєС‚РЅС‹Рµ РґР°РЅРЅС‹Рµ РѕС…СЂР°РЅС‹ РґР»СЏ РѕС„РѕСЂРјР»РµРЅРёСЏ РїСЂРѕРїСѓСЃРєР° РІ РїСЂРёСЋС‚ РґР»СЏ РєРѕС€РµРє
-    CONTACT_SECURITY_DOGS("/contactsecuritydogs"), //РљРѕРЅС‚Р°РєС‚РЅС‹Рµ РґР°РЅРЅС‹Рµ РѕС…СЂР°РЅС‹ РґР»СЏ РѕС„РѕСЂРјР»РµРЅРёСЏ РїСЂРѕРїСѓСЃРєР° РІ РїСЂРёСЋС‚ РґР»СЏ СЃРѕР±Р°Рє
-    REPORT_DOG("/report_dog"),
+    DOGS("/dogs"), // Команда вызова приюта для собак
+    CATS("/cats"), //Команда вызова приюта для кошек
+    INFO_SHELTER("/getInfo"), // Узнать информацию о приюте
+    GET_PET_IS_SHELTER("/getPet"),//Как взять животное из приюта
+    REPORT_DOG("/report_dog"), // Прислать отчет о питомце собаке
+    REPORT_CAT("/report_cat"), // Прислать отчет о питомце кошке
+    GET_DOG_VOLUNTEER("/getDogVolunteer"), // Позвать волонтера из приюта для собак
+    GET_CAT_VOLUNTEER("/getCatVolunteer"), // Позвать волонтера из приюта для кошек
+    ACCEPT_DOG_USER_QUERY("/acDQ"), //Принять запрос от пользователя. Приют для собак
+    DECLINE_DOG_USER_QUERY("/dcDQ"),//Отклонить запрос от пользователя. Приют для собак
+    ACCEPT_CAT_USER_QUERY("/acCQ"), //Принять запрос от пользователя. Приют для кошек
+    DECLINE_CAT_USER_QUERY("/dcCQ"),//Отклонить запрос от пользователя. Приют для кошек
+    FINISH_TALK_DOG_USER("/finDog"), //Завершить разговор с пользователем. Приют для собак
+    FINISH_TALK_CAT_USER("/finCat"), //Завершить разговор с пользователем. Приют для кошек
+    INFO_CATS("/infocats"), //Информация о приюте кошек
+    INFO_DOGS("/infodogs"), //Информация о приюте собак
+    INFO_WORK_SCHEDULE_DOGS("/worksheduledogs"), // Информация о времени работы приюта для собак и адрес приюта
+    INFO_WORK_SCHEDULE_CATS("/workshedulecats"),// Информация о времени работы приюта для кошек и адрес приюта
+    CONTACT_SECURITY_CATS("/contactsecuritycats"), //Контактные данные охраны для оформления пропуска в приют для кошек
+    CONTACT_SECURITY_DOGS("/contactsecuritydogs"), //Контактные данные охраны для оформления пропуска в приют для собак
+
     CHECK("/check"),
-    RECOMMENDATIONS_SAFETY_CATS("/infosafetycats"), //РџСЂР°РІРёР»Р° Р±РµР·РѕРїР°СЃРЅРѕСЃС‚Рё РІ РїСЂРёСЋС‚Рµ РґР»СЏ РєРѕС€РµРє
-    RECOMMENDATIONS_SAFETY_DOGS("/infosafetydogs"),//РџСЂР°РІРёР»Р° Р±РµР·РѕРїР°СЃРЅРѕСЃС‚Рё РІ РїСЂРёСЋС‚Рµ РґР»СЏ СЃРѕР±Р°Рє
+
+    GOOD_REPORT_DOG("/goodReportDog"),
+    BAD_REPORT_DOG("/badReportDog"),
+    ADD_14_DAYS_DOG("/add14daysDog"),
+    ADD_30_DAYS_DOG("/add30daysDog"),
+    FAILED_PROBATION_DOG("/failedDog"),
+    GOOD_REPORT_CAT("/goodReportCat"),
+    BAD_REPORT_CAT("/badReportCat"),
+    ADD_14_DAYS_CAT("/add14daysCat"),
+    ADD_30_DAYS_CAT("/add30daysCat"),
+    FAILED_PROBATION_CAT("failedCat"),
+
+    RECOMMENDATIONS_SAFETY_CATS("/infosafetycats"), //Правила безопасности в приюте для кошек
+    RECOMMENDATIONS_SAFETY_DOGS("/infosafetydogs"),//Правила безопасности в приюте для собак
     CREATE_DOG_VOLUNTEER("/createDogVolunteer"), //Create dogs shelter volunteer command name
     CREATE_CAT_VOLUNTEER("/createCatVolunteer"), //Create cats shelter volunteer command name
     CREATE_USER_DOG("/createUserDog"), // Create user dog command name
     CREATE_USER_CAT("/createUserCat"), // Create user cat command name
-    BACK_TO_MENU("/backtomenu"); // РљРЅРѕРїРєР° РІС‹С…РѕРґР° РІ РїСЂРµРґС‹РґСѓС‰РµРµ РјРµРЅСЋ
+    BACK_TO_MENU_CAT("/backToMenuCat"), // Кнопка выхода в предыдущее меню
+    BACK_TO_MENU_DOG("/backToMenuDog"); // Кнопка выхода в предыдущее меню
 
     private final String commandName;
 }

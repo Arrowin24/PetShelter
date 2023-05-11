@@ -55,20 +55,24 @@ public class CreateVolunteerCatStep extends Step {
     public void doStep(Update update) {
         Step currentStep = getContainer().getStep(update);
         switch (currentStep.getStep()) {
-            case ONE -> addNameStep(update);
-            case TWO -> addPhoneStep(update);
-            case THREE -> {
+            case ONE:
+                addNameStep(update);
+                break;
+            case TWO:
+                addPhoneStep(update);
+                break;
+            case THREE:
                 addMailStep(update);
                 finishStep(update);
-            }
-            default -> {
+                break;
+            default:
                 errorStep(update);
                 log.debug("Произошла ошибка регистрации. У пользователя с id=" + update.getMessage()
-                        .getChatId() + " последнее " + "сообщение: " + update
+                                                                                       .getChatId() + " последнее " + "сообщение: " + update
                         .getMessage().getText());
-            }
         }
     }
+
 
     private void addNameStep(Update update) {
         long id = getId(update);

@@ -1,28 +1,30 @@
 package ru.fiksiki.petshelter.services.impl;
 
 import org.springframework.stereotype.Service;
-import ru.fiksiki.petshelter.exception.AdopterNotFoundException;
-import ru.fiksiki.petshelter.model.AdopterDog;
+import ru.fiksiki.petshelter.exception.UserDogNotFoundException;
 import ru.fiksiki.petshelter.model.ProbationDog;
-import ru.fiksiki.petshelter.services.ProbationService;
-import ru.fiksiki.petshelter.services.repository.AdopterDogRepository;
+import ru.fiksiki.petshelter.model.UserDog;
+import ru.fiksiki.petshelter.services.ProbationDogService;
+import ru.fiksiki.petshelter.services.UserDogService;
 import ru.fiksiki.petshelter.services.repository.ProbationDogRepository;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class ProbationDogServiceImpl implements ProbationService {
+public class ProbationDogServiceImpl implements ProbationDogService {
 
     private final ProbationDogRepository probationDogRepository;
+    private final UserDogService userDogService;
 
-    private final AdopterDogRepository adopterDogRepository;
 
     public ProbationDogServiceImpl(
-            ProbationDogRepository probationDogRepository, AdopterDogRepository adopterDogRepository)
+            ProbationDogRepository probationDogRepository,
+            UserDogService userDogService)
     {
         this.probationDogRepository = probationDogRepository;
-        this.adopterDogRepository = adopterDogRepository;
+        this.userDogService = userDogService;
     }
 
     @Override
@@ -30,18 +32,48 @@ public class ProbationDogServiceImpl implements ProbationService {
         probationDogRepository.save(probationDog);
     }
 
-    private AdopterDog readAdopter(long id) {
-        if (adopterDogRepository.findById(id).isPresent()) {
-            return adopterDogRepository.findById(id).get();
-        }
-        throw new AdopterNotFoundException();
+    @Override
+    public List<ProbationDog> readAll() {
+        return probationDogRepository.findAll();
     }
 
     @Override
-    public List<Long> getAllAdopters() {
-        return probationDogRepository.findAll().stream().map(p -> readAdopter(p.getAdopterId()).getUserId())
-                                     .collect(Collectors.toList());
+    public ProbationDog read(long id) {
+        if (probationDogRepository.findById(id).isPresent()) {
+            return probationDogRepository.findById(id).get();
+        }
+        throw new UserDogNotFoundException();
     }
 
+    @Override
+    public void updateLastReportDate(Long id, LocalDate localDate){
+        probationDogRepository.updateLastReportBy(id, localDate);
+    }
+
+    @Override
+    public void updateDayLeft(ProbationDog probationDog) {
+        probationDogRepository.updateDayLeft(probationDog.getDayLeft(), probationDog.getId());
+    }
+
+
+    @Override
+    public List<Long> getAllAdopters() {
+        return probationDogRepository.findAll().stream().map(ProbationDog::getId).collect(Collectors.toList());
+    }
+
+    @Override
+    public void deleteProbation(ProbationDog probationDog) {
+        probationDogRepository.delete(probationDog);
+    }
+
+    @Override
+    public boolean isProbationDog(Long id) {
+        return probationDogRepository.existsById(id);
+    }
+
+    @Override
+    public UserDog getUserDog(Long id) {
+        return userDogService.read(id);
+    }
 
 }

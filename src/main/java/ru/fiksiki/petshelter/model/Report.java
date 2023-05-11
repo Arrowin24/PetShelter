@@ -32,15 +32,15 @@ public class Report {
             XWPFDocument document = new XWPFDocument();
             XWPFParagraph paragraph = document.createParagraph();
             XWPFRun run = paragraph.createRun();
-            run.setText("Р Р°С†РёРѕРЅ:");
+            run.setText("Рацион:");
             run.addBreak();
             run.setText(ration);
             run.addBreak();
-            run.setText("РћР±С‰РµРµ СЃР°РјРѕС‡СѓРІСЃС‚РІРёРµ Рё РїСЂРёРІС‹РєР°РЅРёРµ Рє РЅРѕРІРѕРјСѓ РјРµСЃС‚Сѓ:");
+            run.setText("Общее самочувствие и привыкание к новому месту:");
             run.addBreak();
             run.setText(health);
             run.addBreak();
-            run.setText("РР·РјРµРЅРµРЅРёРµ РІ РїРѕРІРµРґРµРЅРёРё: РѕС‚РєР°Р· РѕС‚ СЃС‚Р°СЂС‹С… РїСЂРёРІС‹С‡РµРє, РїСЂРёРѕР±СЂРµС‚РµРЅРёРµ РЅРѕРІС‹С…");
+            run.setText("Изменение в поведении: отказ от старых привычек, приобретение новых");
             run.addBreak();
             run.setText(behavior);
             run.addBreak();
@@ -56,7 +56,6 @@ public class Report {
         throw new RuntimeException();
     }
 
-    //РќР• Р РђР‘РћРўРђР•Рў!!!!!
      public void insertPhoto(Path photoPath, Path docPath) {
         try {
             // Open the existing document file

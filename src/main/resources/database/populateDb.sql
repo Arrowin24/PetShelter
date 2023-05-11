@@ -1,0 +1,17 @@
+﻿
+INSERT INTO volunteer_dog
+VALUES (1207017951,'Igor','mmm',51684);
+
+INSERT INTO dogs
+VALUES (1,'Dog',10,'fffff');
+
+INSERT INTO user_dog
+VALUES (1207017951,'Igor','mmm',51684);
+
+INSERT INTO adopter_dog
+VALUES (1207017951,1);
+
+INSERT INTO probation_dog
+VALUES (1207017951,1207017951,'2023-05-11',10);
+
+SELECT * FROM probation_dog;

@@ -11,6 +11,10 @@ import ru.fiksiki.petshelter.step.talk.CallCatVolunteerStep;
 
 import static ru.fiksiki.petshelter.controller.TelegramBotController.SPLIT;
 
+/**
+ * This class represents a command that accepts a request from a user to adopt a cat.
+ * It sets the appropriate steps and updates the container accordingly.
+ */
 @Component
 public class AcceptCatUserQueryCommand extends Command {
 
@@ -18,7 +22,11 @@ public class AcceptCatUserQueryCommand extends Command {
 
     private final StepsContainer container;
 
-
+    /**
+     * Constructs a new AcceptCatUserQueryCommand with the specified parameters.
+     * @param sendMessageService the service used to send messages to the user
+     * @param container the container that holds the steps for this command
+     */
     public AcceptCatUserQueryCommand(SendMessageService sendMessageService, StepsContainer container) {
         super(CommandName.ACCEPT_CAT_USER_QUERY);
         this.sendMessageService = sendMessageService;
@@ -26,17 +34,23 @@ public class AcceptCatUserQueryCommand extends Command {
 
     }
 
+    /**
+     * Returns the steps container for this command.
+     * @return the steps container for this command
+     */
     public StepsContainer getContainer() {
         return container;
     }
 
+    /**
+     * Updates the container with the appropriate steps for accepting a cat adoption request.
+     * @param update the update that triggered this command and got userId
+     */
     @Override
     public void execute(Update update) {
         long userId = Long.parseLong(update.getCallbackQuery().getData().split(SPLIT)[1]);
         long volunteerId = getId(update);
-
-        CallCatVolunteerStep callCatVolunteerStep =
-                (CallCatVolunteerStep) getContainer().getStepById(userId);
+        CallCatVolunteerStep callCatVolunteerStep = (CallCatVolunteerStep) getContainer().getStepById(userId);
         callCatVolunteerStep.setStep(StepName.ONE);
         callCatVolunteerStep.setVolunteerId(getId(update));
         getContainer().putStep(userId, callCatVolunteerStep);
@@ -45,8 +59,6 @@ public class AcceptCatUserQueryCommand extends Command {
 
         answerCatUserStep.setUserId(userId);
         answerCatUserStep.setStep(StepName.ONE);
-        getContainer().putStep(volunteerId,answerCatUserStep);
-
-
+        getContainer().putStep(volunteerId, answerCatUserStep);
     }
 }

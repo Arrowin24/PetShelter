@@ -6,13 +6,13 @@ import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "probation_dog")
+@Table(name = "probation_cat")
 @Getter
 @Setter
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProbationDog {
+public class ProbationCat {
     @Id
     @Column(name = "adopter_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)

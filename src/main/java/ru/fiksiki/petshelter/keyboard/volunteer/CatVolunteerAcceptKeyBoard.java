@@ -11,13 +11,12 @@ import java.util.stream.Collectors;
 
 public class CatVolunteerAcceptKeyBoard {
 
-
     public InlineKeyboardMarkup getKeyBoard(long id) {
         InlineKeyboardButton button1 = new InlineKeyboardButton();
         button1.setCallbackData(CommandName.ACCEPT_CAT_USER_QUERY.getCommandName() + "&&" + id);
-        button1.setText("РџСЂРёРЅСЏС‚СЊ Р·Р°РїСЂРѕСЃ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ");
+        button1.setText("Принять запрос пользователя");
         InlineKeyboardButton button2 = new InlineKeyboardButton();
-        button2.setText("РћС‚РєР»РѕРЅРёС‚СЊ Р·Р°РїСЂРѕСЃ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ");
+        button2.setText("Отклонить запрос пользователя");
         button2.setCallbackData(CommandName.DECLINE_CAT_USER_QUERY.getCommandName());
         List<List<InlineKeyboardButton>> keyboard = new ArrayList<>();
         keyboard.add(createButtonsLine(button1));

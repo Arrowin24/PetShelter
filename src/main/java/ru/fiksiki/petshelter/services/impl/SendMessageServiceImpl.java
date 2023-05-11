@@ -53,7 +53,7 @@ public class SendMessageServiceImpl implements SendMessageService {
     @Override
     public void sendDocument(long chatId, InputFile document) {
         if (document == null) {
-            System.out.println("Документ не записался");
+            log.debug("Документ не записался");
             return;
         }
         try {
@@ -65,6 +65,7 @@ public class SendMessageServiceImpl implements SendMessageService {
             telegramBot.execute(sendDocumentRequest);
         } catch (TelegramApiException e) {
             e.printStackTrace();
+            log.error(e.getMessage());
         }
     }
 
@@ -104,6 +105,4 @@ public class SendMessageServiceImpl implements SendMessageService {
         }
         return Path.of("C:\\" + "photo" + adopterName + ".png");
     }
-
-
 }

@@ -24,6 +24,6 @@ public class VolunteerDog {
     private String phone;
 
     public String toText() {
-        return "Р’РѕР»РѕРЅС‚РµСЂ СЃ ID: " + id + "\n РРјСЏ: " + name + "\n РўРµР»РµС„РѕРЅ: "+phone;
+        return "Волонтер с ID: " + id + "\n Имя: " + name + "\n Телефон: "+phone;
     }
 }

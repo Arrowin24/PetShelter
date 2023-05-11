@@ -26,6 +26,6 @@ public class UserCat {
     private String phone;
 
     public String toText() {
-        return "РџРѕС‚РµРЅС†РµР°Р»СЊРЅС‹Р№ С…РѕР·СЏРёРЅ РєРѕС€РєРё/РєРѕС‚Р° СЃ  ID: " + id + "\n РРјСЏ: " + name + "\n РўРµР»РµС„РѕРЅ: "+phone;
+        return "Потенциальный хозяин кошки/кота с  ID: " + id + "\n Имя: " + name + "\n Телефон: "+phone;
     }
 }
