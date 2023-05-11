@@ -29,6 +29,10 @@ public class RepeatReportCommand {
         this.probationCatService = probationCatService;
     }
 
+    /**
+     * This method is used to send a message to all probation dogs to request a report on their status.
+     * It is scheduled to run every day at 12:00 pm via the @Scheduled annotation with the cron expression "00 00 12 * * *".
+     */
     @Scheduled(cron = "00 00 12 * * *")
     private void reportDog() {
         SendMessage message = new SendMessage();
@@ -42,6 +46,12 @@ public class RepeatReportCommand {
             }
         }
     }
+
+    /**
+     * This method is used to send a message to all probation cats to request a report on their status.
+     * It is scheduled to run every day at 12:00 pm via the @Scheduled annotation with the cron expression "00 00 12 * * *".
+     * @return void
+     */
 
     @Scheduled(cron = "00 00 12 * * *")
     private void reportCat() {
@@ -57,7 +67,13 @@ public class RepeatReportCommand {
         }
     }
 
-
+    /**
+     * This method is used to determine if the given dog's adopter is currently on probation.
+     * If the last report for the adopter was submitted within the last day, the adopter's remaining days on probation are decremented by one.
+     * If the adopter's remaining days on probation reaches zero, the dog is removed from probation and a message is sent to the owner.
+     * @param probationDog A ProbationDog object representing the adopters probation to check.
+     * @return true if the dog is still on probation, false if the dog has completed probation and been removed.
+     */
     private boolean isProbationNow(ProbationDog probationDog) {
         if (probationDog.getLastReport().isAfter(LocalDate.now().minusDays(1))) {
             probationDog.setDayLeft(probationDog.getDayLeft() - 1);
@@ -71,6 +87,13 @@ public class RepeatReportCommand {
         return true;
     }
 
+    /**
+     * This method is used to determine if the given cat's adopter  is currently on probation.
+     * If the last report for the adopter was submitted within the last day, the adopter's remaining days on probation are decremented by one.
+     * If the adopter's remaining days on probation reaches zero, the cat is removed from probation and a message is sent to the owner.
+     * @param probationCat A ProbationCat object representing the cat to check.
+     * @return true if the cat is still on probation, false if the cat has completed probation and been removed.
+     */
     private boolean isProbationNow(ProbationCat probationCat) {
         if (probationCat.getLastReport().isAfter(LocalDate.now().minusDays(1))) {
             probationCat.setDayLeft(probationCat.getDayLeft() - 1);
@@ -84,6 +107,10 @@ public class RepeatReportCommand {
         return true;
     }
 
+    /**
+     * This method sends a message to the owner of the animal letting them know that the probation period has ended.
+     * @param id A long representing the ID of the chat to send the message to.
+     */
     private void sendFinishProbation(long id) {
         SendMessage message = new SendMessage();
         message.setChatId(id);

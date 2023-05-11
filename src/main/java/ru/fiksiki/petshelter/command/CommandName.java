@@ -56,6 +56,5 @@ public enum CommandName {
     CREATE_USER_CAT("/createUserCat"), // Create user cat command name
     BACK_TO_MENU_CAT("/backToMenuCat"), //  нопка выхода в предыдущее меню
     BACK_TO_MENU_DOG("/backToMenuDog"); //  нопка выхода в предыдущее меню
-
     private final String commandName;
 }

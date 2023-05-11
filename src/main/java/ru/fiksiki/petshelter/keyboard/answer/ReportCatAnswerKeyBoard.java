@@ -9,8 +9,17 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * This class creates an inline keyboard markup for adopter report answer options.
+ */
 public class ReportCatAnswerKeyBoard {
 
+    /**
+     * This method returns an inline keyboard markup for report cat answer options.
+     *
+     * @param probationID - the probation ID for which the report cats adopter answer options are being created
+     * @return an {@link InlineKeyboardMarkup} object containing the report cat answer options
+     */
     public InlineKeyboardMarkup getKeyBoard(long probationID) {
         InlineKeyboardButton button0 = new InlineKeyboardButton();
         button0.setCallbackData(CommandName.GOOD_REPORT_CAT.getCommandName() + "&&" + probationID);
