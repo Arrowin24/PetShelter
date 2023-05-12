@@ -7,8 +7,17 @@ import ru.fiksiki.petshelter.keyboard.BackToMenuKeyboard;
 import ru.fiksiki.petshelter.keyboard.CatsKeyBoard;
 import ru.fiksiki.petshelter.services.SendMessageService;
 
+/**
+ * Сat shelter menu command
+ */
 @Component
 public class CatsInfoCommand  extends Command{
+    /**
+     * Constructs a new CatsCommand instance with the specified SendMessageService and ShelterInfoCommand
+     *
+     *       @param sendMessageService  the SendMessageService to use for sending messages
+     *       @param Enum ShelterInfoCommand.CATS
+     */
 
     private final SendMessageService sendMessageService;
     private ShelterInfoCommand INFO = ShelterInfoCommand.CATS;
@@ -18,6 +27,10 @@ public class CatsInfoCommand  extends Command{
         this.sendMessageService = sendMessageService;
     }
 
+    /**
+     * Sends a message with the output of cats shelter commands
+     * @param update get info from telegram chat
+     */
     @Override
     public void execute(Update update) {
         SendMessage message = new SendMessage();

@@ -7,8 +7,15 @@ import ru.fiksiki.petshelter.keyboard.CatsKeyBoard;
 import ru.fiksiki.petshelter.keyboard.DogsKeyBoard;
 import ru.fiksiki.petshelter.services.SendMessageService;
 
+/**
+ * Сommand to exit back to the menu DogCommand
+ */
 @Component
 public class BackToMenuDogCommand extends Command{
+    /**
+     * Constructs a new BackToMenuDogCommand instance with the specified SendMessageService
+     * @param sendMessageService  the SendMessageService to use for sending messages
+     */
     private final SendMessageService sendMessageService;
 
 
@@ -18,6 +25,10 @@ public class BackToMenuDogCommand extends Command{
 
     }
 
+    /**
+     * Executes the BackToMenuDogCommand with the specified Update.
+     * @param update get info from telegram chat
+     */
     @Override
     public void execute(Update update) {
         SendMessage message = new SendMessage();
