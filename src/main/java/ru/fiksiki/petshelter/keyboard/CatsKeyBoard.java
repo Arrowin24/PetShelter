@@ -13,8 +13,8 @@ public class CatsKeyBoard implements KeyBoard{
     public InlineKeyboardMarkup getKeyBoard() {
         InlineKeyboardButton button1 = createButton("Узнать информацию о приюте", CommandName.INFO_CATS);
         InlineKeyboardButton button2 = createButton("Рекомендации для будущих хозяев кошки/кота", CommandName.RECOMMENDATIONS_CATS);
-        InlineKeyboardButton button3 = createButton("Прислать отчет о питомце", CommandName.GET_REPORT_IS_PET);
-        InlineKeyboardButton button4 = createButton("Позвать волонтера", CommandName.GET_VOLUNTEERS);
+        InlineKeyboardButton button3 = createButton("Прислать отчет о питомце", CommandName.REPORT_CAT);
+        InlineKeyboardButton button4 = createButton("Позвать волонтера", CommandName.GET_CAT_VOLUNTEER);
         InlineKeyboardButton button5 = createButton("Вернуться в меню", CommandName.START);
 
         List<List<InlineKeyboardButton>> keyboard = new ArrayList<>();

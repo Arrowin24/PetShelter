@@ -44,7 +44,11 @@ public enum CommandName {
     HOME_IMPROVEMENT_DISABLED_DOGS("/homedisabledgogs"), // Кнопка с рекомендациями по обустройству дома для собаки с ограниченными возможностями
     HOME_IMPROVEMENT_DISABLED_CATS("/homedisabledcats"), // Кнопка с рекомендациями по обустройству дома для кошки с ограниченными возможностями
     REASONS_FOR_REFUSAL_DOGS("/reasonsforrefusaldogs"), //Кнопка с правилами отказа от взятия собаки из приюта
-    REASONS_FOR_REFUSAL_CATS("/reasonsforrefusalcats"); //Кнопка с правилами отказа от взятия кошки из приюта
+    REASONS_FOR_REFUSAL_CATS("/reasonsforrefusalcats"), //Кнопка с правилами отказа от взятия кошки из приюта
+    REPORT_DOG("/report_dog"), // Прислать отчет о питомце собаке
+    REPORT_CAT("/report_cat"), // Прислать отчет о питомце кошке
+    GET_DOG_VOLUNTEER("/getDogVolunteer"), // Позвать волонтера из приюта для собак
+    GET_CAT_VOLUNTEER("/getCatVolunteer"); // Позвать волонтера из приюта для кошек
 
 
     private final String commandName;
