@@ -3,6 +3,7 @@ package ru.fiksiki.petshelter.command;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
+import ru.fiksiki.petshelter.keyboard.BackToMenuKeyboard;
 import ru.fiksiki.petshelter.keyboard.CatsKeyBoard;
 import ru.fiksiki.petshelter.services.SendMessageService;
 
@@ -24,5 +25,6 @@ public class CatsCommand extends Command{
         message.setText(CATS_MESSAGE);
         message.setReplyMarkup(new CatsKeyBoard().getKeyBoard());
         sendMessageService.sendMessage(message);
+
     }
 }

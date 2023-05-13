@@ -4,18 +4,14 @@ import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import ru.fiksiki.petshelter.keyboard.BackToMenuKeyboard;
-import ru.fiksiki.petshelter.keyboard.CatsKeyBoard;
-import ru.fiksiki.petshelter.keyboard.InfoShelterCatsKeyboard;
 import ru.fiksiki.petshelter.services.SendMessageService;
-
 @Component
-public class CatsInfoCommand  extends Command{
-
+public class TransportationDogsCommand extends  Command {
     private final SendMessageService sendMessageService;
-    private ShelterInfoCommand INFO = ShelterInfoCommand.CATS;
+    private RecommendationsDogsCommand recommendationsDogsCommand = RecommendationsDogsCommand.TRANSPORTATION_ADVICE_DOGS;
 
-    public CatsInfoCommand(SendMessageService sendMessageService) {
-        super(CommandName.INFO_CATS);
+    public TransportationDogsCommand (SendMessageService sendMessageService) {
+        super(CommandName.TRANSPORTATION_DOGS);
         this.sendMessageService = sendMessageService;
     }
 
@@ -23,10 +19,10 @@ public class CatsInfoCommand  extends Command{
     public void execute(Update update) {
         SendMessage message = new SendMessage();
         message.setChatId(getId(update));
-        message.setText(String.valueOf(INFO));
-        message.setReplyMarkup(new InfoShelterCatsKeyboard().getKeyBoard());
-        sendMessageService.sendMessage(message);
+        message.setText(String.valueOf(recommendationsDogsCommand));
         message.setReplyMarkup(new BackToMenuKeyboard().getKeyBoard());
-
+        sendMessageService.sendMessage(message);
     }
 }
+
+

@@ -4,6 +4,7 @@ import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import ru.fiksiki.petshelter.keyboard.BackToMenuKeyboard;
+import ru.fiksiki.petshelter.keyboard.InfoShelterDogsKeyboard;
 import ru.fiksiki.petshelter.services.SendMessageService;
 
 @Component
@@ -21,7 +22,8 @@ public class DogsInfoCommand  extends Command{
         SendMessage message = new SendMessage();
         message.setChatId(getId(update));
         message.setText(String.valueOf(Info));
-        message.setReplyMarkup(new BackToMenuKeyboard().getKeyBoard());
+        message.setReplyMarkup(new InfoShelterDogsKeyboard().getKeyBoard());
         sendMessageService.sendMessage(message);
+        message.setReplyMarkup(new BackToMenuKeyboard().getKeyBoard());
     }
 }
