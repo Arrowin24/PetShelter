@@ -24,4 +24,8 @@ public class UserCat {
     private String mail;
     @Column(name="phone")
     private String phone;
+
+    public String toText() {
+        return "Потенциальный хозяин кошки/кота с  ID: " + id + "\n Имя: " + name + "\n Телефон: "+phone;
+    }
 }

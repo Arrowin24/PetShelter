@@ -14,6 +14,10 @@ public class StepsContainer {
         return steps.get(getId(update));
     }
 
+    public Step getStepById(Long id) {
+        return steps.get(id);
+    }
+
     public void putStep(long id, Step step) {
         steps.put(id, step);
     }

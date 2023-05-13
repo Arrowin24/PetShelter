@@ -10,7 +10,7 @@ import ru.fiksiki.petshelter.services.SendMessageService;
 public class SecurityCatsCommand extends Command{
 
     private final SendMessageService sendMessageService;
-    private ShelterInfoCommand INFO = ShelterInfoCommand.SECURITY_CATS;
+    private final ShelterInfoCommand INFO = ShelterInfoCommand.SECURITY_CATS;
 
     public SecurityCatsCommand(SendMessageService sendMessageService) {
         super(CommandName.CONTACT_SECURITY_CATS);
