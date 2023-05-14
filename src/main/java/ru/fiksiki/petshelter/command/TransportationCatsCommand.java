@@ -6,8 +6,17 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 import ru.fiksiki.petshelter.keyboard.BackToMenuKeyboard;
 import ru.fiksiki.petshelter.services.SendMessageService;
 
+/**
+ * Command with the rules for transporting  cat from a shelter
+ */
 @Component
-public class TransportationCatsCommand extends Command{
+public class TransportationCatsCommand extends Command {
+    /**
+     * * Constructs a new TransportationCatsCommand  instance with the specified SendMessageService and RecommendationsCatsCommand
+     *
+     * @param sendMessageService  the SendMessageService to use for sending messages
+     * @param Enum recommendationsCatsCommand
+     */
     private final SendMessageService sendMessageService;
     private RecommendationsCatsCommand recommendationsCatsCommand = RecommendationsCatsCommand.TRANSPORTATION_ADVICE_CATS;
 
@@ -15,7 +24,10 @@ public class TransportationCatsCommand extends Command{
         super(CommandName.TRANSPORTATION_CATS);
         this.sendMessageService = sendMessageService;
     }
-
+    /**
+     * Send message with the rules for transporting  cats from a shelter
+     * @param update get info from telegram chat
+     */
     @Override
     public void execute(Update update) {
         SendMessage message = new SendMessage();

@@ -6,8 +6,17 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 import ru.fiksiki.petshelter.keyboard.BackToMenuKeyboard;
 import ru.fiksiki.petshelter.services.SendMessageService;
 
+/**
+ * Command with rules for not adopting a dog from a shelter
+ */
 @Component
-public class ReasonsForRefusalDogsCommand extends  Command{
+public class ReasonsForRefusalDogsCommand extends Command {
+    /**
+     * Constructs a new ReasonsForRefusalCatsCommand  instance with the specified SendMessageService and RecommendationsDogsCommand
+     *
+     * @param sendMessageService  the SendMessageService to use for sending messages
+     * @param Enum recommendationsDogsCommand
+     */
     private final SendMessageService sendMessageService;
     private RecommendationsDogsCommand recommendationsDogsCommand = RecommendationsDogsCommand.REASONS_FOR_REFUSAL_DOGS;
 
@@ -16,6 +25,11 @@ public class ReasonsForRefusalDogsCommand extends  Command{
         this.sendMessageService = sendMessageService;
     }
 
+    /**
+     * Sends a message about the right to refuse adoption from the shelter
+     *
+     * @param update get info from telegram chat
+     */
     @Override
     public void execute(Update update) {
         SendMessage message = new SendMessage();

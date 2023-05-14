@@ -19,7 +19,7 @@ public class StartCommand extends Command{
      * @param START_MESSAGE with information about shelters
      */
     private final SendMessageService sendMessageService;
-    private final static String START_MESSAGE = "Привет. Я телеграм бот, вет клиники." + " Выберете пожалуйста нужный вам приют : " ;
+    public final static String START_MESSAGE = "Привет. Я телеграм бот, вет клиники." + " Выберете пожалуйста нужный вам приют : " ;
 
     public StartCommand(SendMessageService sendMessageService) {
         super(CommandName.START);

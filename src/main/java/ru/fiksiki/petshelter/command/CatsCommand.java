@@ -20,7 +20,7 @@ public class CatsCommand extends Command {
      * @param String CATS_MESSAGE  carries a text description
      */
     private final SendMessageService sendMessageService;
-    private final static String CATS_MESSAGE = "Приют для кошек";
+    public final static String CATS_MESSAGE = "Приют для кошек";
 
     public CatsCommand(SendMessageService sendMessageService) {
         super(CommandName.CATS);

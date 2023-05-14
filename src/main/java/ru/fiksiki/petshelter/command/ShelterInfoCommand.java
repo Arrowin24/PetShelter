@@ -36,5 +36,10 @@ public enum ShelterInfoCommand {
         return  shelterName ;
 
     }
+
+
+    public String getCommandName() {
+        return shelterName;
+    }
 }
 

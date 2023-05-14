@@ -8,6 +8,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+/**
+ * Container with commands that bet uses
+ */
+
 @Component
 public class CommandContainer {
     private final Map<String, Command> commandMap;

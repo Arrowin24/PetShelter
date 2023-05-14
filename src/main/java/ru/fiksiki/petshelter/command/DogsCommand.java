@@ -18,7 +18,7 @@ public class DogsCommand extends Command{
      * @param String DOGS_MESSAGE  carries a text description
      */
     private final SendMessageService sendMessageService;
-    private final static String DOGS_MESSAGE = "Приют для собак";
+    public final static String DOGS_MESSAGE = "Приют для собак";
 
     public DogsCommand(SendMessageService sendMessageService) {
         super(CommandName.DOGS);

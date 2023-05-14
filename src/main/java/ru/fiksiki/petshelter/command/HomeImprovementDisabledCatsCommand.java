@@ -6,8 +6,17 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 import ru.fiksiki.petshelter.keyboard.BackToMenuKeyboard;
 import ru.fiksiki.petshelter.services.SendMessageService;
 
+/**
+ * Command with rules for decorating a house for a disabled cat
+ */
 @Component
-public class HomeImprovementDisabledCatsCommand extends Command{
+public class HomeImprovementDisabledCatsCommand extends Command {
+    /**
+     * Constructs a new  HomeImprovementCatsCommand instance with the specified SendMessageService and  RecommendationsCatsCommand
+     *
+     * @param sendMessageService  the SendMessageService to use for sending messages
+     * @param Enum recommendationsCatsCommand
+     */
     private final SendMessageService sendMessageService;
     private RecommendationsCatsCommand recommendationsCatsCommand = RecommendationsCatsCommand.HOME_IMPROVEMENT_DISABLED_CATS;
 
@@ -16,6 +25,11 @@ public class HomeImprovementDisabledCatsCommand extends Command{
         this.sendMessageService = sendMessageService;
     }
 
+    /**
+     * Sends a message house rules
+     *
+     * @param update get info from telegram chat
+     */
     @Override
     public void execute(Update update) {
         SendMessage message = new SendMessage();
@@ -23,5 +37,5 @@ public class HomeImprovementDisabledCatsCommand extends Command{
         message.setText(String.valueOf(recommendationsCatsCommand));
         message.setReplyMarkup(new BackToMenuKeyboard().getKeyBoard());
         sendMessageService.sendMessage(message);
-}
+    }
 }
