@@ -12,7 +12,7 @@ import ru.fiksiki.petshelter.step.StepsContainer;
 
 import static ru.fiksiki.petshelter.controller.TelegramBotController.SPLIT;
 /**
- * This class represents a command that accepts a request from a user to adopt a dog.
+ * This class represents a command that accepts a request from a user to conversation with volunteer.
  * It sets the appropriate steps and updates the container accordingly.
  */
 @Component
@@ -43,7 +43,7 @@ public class AcceptDogUserQueryCommand extends Command {
     }
 
     /**
-     * Executes the command to update the container with the appropriate steps for accepting a dog adoption request.
+     * Executes the command to update the container with the appropriate steps for accepting a user-volunteer conversation request.
      *
      * @param update the update that triggered this command
      */

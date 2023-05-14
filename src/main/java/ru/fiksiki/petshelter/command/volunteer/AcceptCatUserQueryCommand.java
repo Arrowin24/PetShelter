@@ -12,7 +12,7 @@ import ru.fiksiki.petshelter.step.talk.CallCatVolunteerStep;
 import static ru.fiksiki.petshelter.controller.TelegramBotController.SPLIT;
 
 /**
- * This class represents a command that accepts a request from a user to adopt a cat.
+ * This class represents a command that accepts a request from a user to chat with volunteer.
  * It sets the appropriate steps and updates the container accordingly.
  */
 @Component
@@ -35,7 +35,6 @@ public class AcceptCatUserQueryCommand extends Command {
     }
 
     /**
-     * Returns the steps container for this command.
      * @return the steps container for this command
      */
     public StepsContainer getContainer() {
@@ -43,9 +42,10 @@ public class AcceptCatUserQueryCommand extends Command {
     }
 
     /**
-     * Updates the container with the appropriate steps for accepting a cat adoption request.
+     * Updates the container with the appropriate steps for accepting a user-volunteer conversation request.
      * @param update the update that triggered this command and got userId
      */
+
     @Override
     public void execute(Update update) {
         long userId = Long.parseLong(update.getCallbackQuery().getData().split(SPLIT)[1]);
