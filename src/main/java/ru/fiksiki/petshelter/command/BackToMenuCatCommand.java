@@ -6,8 +6,16 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 import ru.fiksiki.petshelter.keyboard.CatsKeyBoard;
 import ru.fiksiki.petshelter.services.SendMessageService;
 
+/**
+ * Сommand to exit back to the menu CatCommand
+ */
 @Component
-public class BackToMenuCatCommand extends Command{
+public class BackToMenuCatCommand extends Command {
+    /**
+     *Constructs a new BackToMenuCatCommand instance with the specified SendMessageService
+     * @param sendMessageService  the SendMessageService to use for sending messages
+     */
+
     private final SendMessageService sendMessageService;
 
 
@@ -17,6 +25,10 @@ public class BackToMenuCatCommand extends Command{
 
     }
 
+    /**
+     * Executes the BackToMenuCatCommand with the specified Update.
+     * @param update get info from telegram chat
+     */
     @Override
     public void execute(Update update) {
         SendMessage message = new SendMessage();
