@@ -12,7 +12,7 @@ import ru.fiksiki.petshelter.services.SendMessageService;
 public class HelpCommand extends Command{
 
     private final SendMessageService sendMessageService;
-    private final static String HELP_MESSAGE = "Привет. Это команда помощи!!!";
+    public final static String HELP_MESSAGE = "Привет. Это команда помощи!!!";
 
     /**
      * Constructs a new HelpCommand object.
